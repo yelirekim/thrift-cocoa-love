@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "asdf.h"
+
+#define app ((AppDelegate *)[UIApplication sharedApplication].delegate)
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (nonatomic, readonly) asdfAuthenticatedServiceClientAsync * asdf;
 
 @end
 

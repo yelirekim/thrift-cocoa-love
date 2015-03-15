@@ -27,6 +27,9 @@
 		3251BFD71AB58937000DE726 /* TSharedProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251BFC51AB58937000DE726 /* TSharedProcessorFactory.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3251BFDB1AB58E9F000DE726 /* ThriftTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251BFDA1AB58E9F000DE726 /* ThriftTest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		3251BFDF1AB5AF12000DE726 /* TBaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251BFDD1AB5AF12000DE726 /* TBaseClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		3251BFE51AB5F121000DE726 /* AFNetworkingThriftTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251BFE41AB5F121000DE726 /* AFNetworkingThriftTransport.m */; };
+		3251BFE81AB5FA62000DE726 /* asdf.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251BFE61AB5FA62000DE726 /* asdf.m */; };
+		3251BFEB1AB5FC62000DE726 /* LiberalBinaryProtocolFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251BFEA1AB5FC62000DE726 /* LiberalBinaryProtocolFactory.m */; };
 		32D8DBBD1AB586D200D338B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D8DBBC1AB586D200D338B2 /* main.m */; };
 		32D8DBC01AB586D200D338B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D8DBBF1AB586D200D338B2 /* AppDelegate.m */; };
 		32D8DBC31AB586D200D338B2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D8DBC21AB586D200D338B2 /* ViewController.m */; };
@@ -98,6 +101,12 @@
 		3251BFDC1AB59176000DE726 /* TAsyncTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAsyncTransport.h; sourceTree = "<group>"; };
 		3251BFDD1AB5AF12000DE726 /* TBaseClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBaseClient.m; sourceTree = "<group>"; };
 		3251BFDE1AB5AF12000DE726 /* TBaseClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBaseClient.h; sourceTree = "<group>"; };
+		3251BFE31AB5F121000DE726 /* AFNetworkingThriftTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkingThriftTransport.h; sourceTree = "<group>"; };
+		3251BFE41AB5F121000DE726 /* AFNetworkingThriftTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkingThriftTransport.m; sourceTree = "<group>"; };
+		3251BFE61AB5FA62000DE726 /* asdf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = asdf.m; sourceTree = "<group>"; };
+		3251BFE71AB5FA62000DE726 /* asdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asdf.h; sourceTree = "<group>"; };
+		3251BFE91AB5FC62000DE726 /* LiberalBinaryProtocolFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiberalBinaryProtocolFactory.h; sourceTree = "<group>"; };
+		3251BFEA1AB5FC62000DE726 /* LiberalBinaryProtocolFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiberalBinaryProtocolFactory.m; sourceTree = "<group>"; };
 		32D8DBB71AB586D200D338B2 /* thrift-cocoa-love.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "thrift-cocoa-love.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D8DBBB1AB586D200D338B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32D8DBBC1AB586D200D338B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -233,6 +242,8 @@
 		3251BFD81AB58E9F000DE726 /* gen-cocoa */ = {
 			isa = PBXGroup;
 			children = (
+				3251BFE71AB5FA62000DE726 /* asdf.h */,
+				3251BFE61AB5FA62000DE726 /* asdf.m */,
 				3251BFD91AB58E9F000DE726 /* ThriftTest.h */,
 				3251BFDA1AB58E9F000DE726 /* ThriftTest.m */,
 			);
@@ -262,16 +273,20 @@
 		32D8DBB91AB586D200D338B2 /* thrift-cocoa-love */ = {
 			isa = PBXGroup;
 			children = (
-				3251BFD81AB58E9F000DE726 /* gen-cocoa */,
-				3251BF961AB58937000DE726 /* lib */,
+				3251BFE31AB5F121000DE726 /* AFNetworkingThriftTransport.h */,
+				3251BFE41AB5F121000DE726 /* AFNetworkingThriftTransport.m */,
 				32D8DBBE1AB586D200D338B2 /* AppDelegate.h */,
 				32D8DBBF1AB586D200D338B2 /* AppDelegate.m */,
-				32D8DBC11AB586D200D338B2 /* ViewController.h */,
-				32D8DBC21AB586D200D338B2 /* ViewController.m */,
-				32D8DBC41AB586D200D338B2 /* Main.storyboard */,
+				3251BFD81AB58E9F000DE726 /* gen-cocoa */,
 				32D8DBC71AB586D200D338B2 /* Images.xcassets */,
 				32D8DBC91AB586D200D338B2 /* LaunchScreen.xib */,
+				3251BF961AB58937000DE726 /* lib */,
+				32D8DBC41AB586D200D338B2 /* Main.storyboard */,
 				32D8DBBA1AB586D200D338B2 /* Supporting Files */,
+				32D8DBC11AB586D200D338B2 /* ViewController.h */,
+				32D8DBC21AB586D200D338B2 /* ViewController.m */,
+				3251BFE91AB5FC62000DE726 /* LiberalBinaryProtocolFactory.h */,
+				3251BFEA1AB5FC62000DE726 /* LiberalBinaryProtocolFactory.m */,
 			);
 			path = "thrift-cocoa-love";
 			sourceTree = "<group>";
@@ -450,16 +465,19 @@
 				3251BFC91AB58937000DE726 /* TProtocolException.m in Sources */,
 				32D8DBC01AB586D200D338B2 /* AppDelegate.m in Sources */,
 				3251BFCB1AB58937000DE726 /* TSocketServer.m in Sources */,
+				3251BFE51AB5F121000DE726 /* AFNetworkingThriftTransport.m in Sources */,
 				3251BFCD1AB58937000DE726 /* TException.m in Sources */,
 				3251BFCF1AB58937000DE726 /* THTTPClient.m in Sources */,
 				32D8DBBD1AB586D200D338B2 /* main.m in Sources */,
 				3251BFD71AB58937000DE726 /* TSharedProcessorFactory.m in Sources */,
 				3251BFD01AB58937000DE726 /* TMemoryBuffer.m in Sources */,
 				3251BFD21AB58937000DE726 /* TNSStreamTransport.m in Sources */,
+				3251BFE81AB5FA62000DE726 /* asdf.m in Sources */,
 				3251BFDF1AB5AF12000DE726 /* TBaseClient.m in Sources */,
 				3251BFCA1AB58937000DE726 /* TProtocolUtil.m in Sources */,
 				3251BFDB1AB58E9F000DE726 /* ThriftTest.m in Sources */,
 				3251BFC61AB58937000DE726 /* TBinaryProtocol.m in Sources */,
+				3251BFEB1AB5FC62000DE726 /* LiberalBinaryProtocolFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

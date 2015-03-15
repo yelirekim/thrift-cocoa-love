@@ -7,21 +7,28 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
+
+@property (nonatomic) IBOutlet UILabel * label;
+
+- (IBAction)ping:(UIButton *)sender;
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)ping:(UIButton *)sender
+{
+    sender.enabled = NO;
+    [app.asdf ping:[[asdfAuthenticationEnvelope alloc] initWithToken:@"faketoken"] response:^(int32_t stamp) {
+        self.label.text = [NSString stringWithFormat:@"You pinged at %d", stamp];
+        sender.enabled = YES;
+    } failure:^(TException * exception) {
+        self.label.text = [NSString stringWithFormat:@"Got an error.. %@", exception.name];
+        sender.enabled = YES;
+    }];
 }
 
 @end

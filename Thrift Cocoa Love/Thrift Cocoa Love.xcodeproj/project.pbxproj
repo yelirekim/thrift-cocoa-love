@@ -1,0 +1,427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		32F4D2281AB5845F007EF478 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F4D2271AB5845F007EF478 /* main.m */; };
+		32F4D22B1AB5845F007EF478 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F4D22A1AB5845F007EF478 /* AppDelegate.m */; };
+		32F4D22E1AB5845F007EF478 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F4D22D1AB5845F007EF478 /* ViewController.m */; };
+		32F4D2311AB5845F007EF478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F4D22F1AB5845F007EF478 /* Main.storyboard */; };
+		32F4D2331AB5845F007EF478 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32F4D2321AB5845F007EF478 /* Images.xcassets */; };
+		32F4D2361AB5845F007EF478 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F4D2341AB5845F007EF478 /* LaunchScreen.xib */; };
+		32F4D2421AB5845F007EF478 /* Thrift_Cocoa_LoveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F4D2411AB5845F007EF478 /* Thrift_Cocoa_LoveTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		32F4D23C1AB5845F007EF478 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 32F4D21A1AB5845F007EF478 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32F4D2211AB5845F007EF478;
+			remoteInfo = "Thrift Cocoa Love";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		32F4D2221AB5845F007EF478 /* Thrift Cocoa Love.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Thrift Cocoa Love.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32F4D2261AB5845F007EF478 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32F4D2271AB5845F007EF478 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32F4D2291AB5845F007EF478 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		32F4D22A1AB5845F007EF478 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		32F4D22C1AB5845F007EF478 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		32F4D22D1AB5845F007EF478 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		32F4D2301AB5845F007EF478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		32F4D2321AB5845F007EF478 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32F4D2351AB5845F007EF478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		32F4D23B1AB5845F007EF478 /* Thrift Cocoa LoveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Thrift Cocoa LoveTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32F4D2401AB5845F007EF478 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32F4D2411AB5845F007EF478 /* Thrift_Cocoa_LoveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Thrift_Cocoa_LoveTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		32F4D21F1AB5845F007EF478 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32F4D2381AB5845F007EF478 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		32F4D2191AB5845F007EF478 = {
+			isa = PBXGroup;
+			children = (
+				32F4D2241AB5845F007EF478 /* Thrift Cocoa Love */,
+				32F4D23E1AB5845F007EF478 /* Thrift Cocoa LoveTests */,
+				32F4D2231AB5845F007EF478 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		32F4D2231AB5845F007EF478 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				32F4D2221AB5845F007EF478 /* Thrift Cocoa Love.app */,
+				32F4D23B1AB5845F007EF478 /* Thrift Cocoa LoveTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32F4D2241AB5845F007EF478 /* Thrift Cocoa Love */ = {
+			isa = PBXGroup;
+			children = (
+				32F4D2291AB5845F007EF478 /* AppDelegate.h */,
+				32F4D22A1AB5845F007EF478 /* AppDelegate.m */,
+				32F4D22C1AB5845F007EF478 /* ViewController.h */,
+				32F4D22D1AB5845F007EF478 /* ViewController.m */,
+				32F4D22F1AB5845F007EF478 /* Main.storyboard */,
+				32F4D2321AB5845F007EF478 /* Images.xcassets */,
+				32F4D2341AB5845F007EF478 /* LaunchScreen.xib */,
+				32F4D2251AB5845F007EF478 /* Supporting Files */,
+			);
+			path = "Thrift Cocoa Love";
+			sourceTree = "<group>";
+		};
+		32F4D2251AB5845F007EF478 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				32F4D2261AB5845F007EF478 /* Info.plist */,
+				32F4D2271AB5845F007EF478 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		32F4D23E1AB5845F007EF478 /* Thrift Cocoa LoveTests */ = {
+			isa = PBXGroup;
+			children = (
+				32F4D2411AB5845F007EF478 /* Thrift_Cocoa_LoveTests.m */,
+				32F4D23F1AB5845F007EF478 /* Supporting Files */,
+			);
+			path = "Thrift Cocoa LoveTests";
+			sourceTree = "<group>";
+		};
+		32F4D23F1AB5845F007EF478 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				32F4D2401AB5845F007EF478 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		32F4D2211AB5845F007EF478 /* Thrift Cocoa Love */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32F4D2451AB5845F007EF478 /* Build configuration list for PBXNativeTarget "Thrift Cocoa Love" */;
+			buildPhases = (
+				32F4D21E1AB5845F007EF478 /* Sources */,
+				32F4D21F1AB5845F007EF478 /* Frameworks */,
+				32F4D2201AB5845F007EF478 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Thrift Cocoa Love";
+			productName = "Thrift Cocoa Love";
+			productReference = 32F4D2221AB5845F007EF478 /* Thrift Cocoa Love.app */;
+			productType = "com.apple.product-type.application";
+		};
+		32F4D23A1AB5845F007EF478 /* Thrift Cocoa LoveTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32F4D2481AB5845F007EF478 /* Build configuration list for PBXNativeTarget "Thrift Cocoa LoveTests" */;
+			buildPhases = (
+				32F4D2371AB5845F007EF478 /* Sources */,
+				32F4D2381AB5845F007EF478 /* Frameworks */,
+				32F4D2391AB5845F007EF478 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				32F4D23D1AB5845F007EF478 /* PBXTargetDependency */,
+			);
+			name = "Thrift Cocoa LoveTests";
+			productName = "Thrift Cocoa LoveTests";
+			productReference = 32F4D23B1AB5845F007EF478 /* Thrift Cocoa LoveTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		32F4D21A1AB5845F007EF478 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = NoWait;
+				TargetAttributes = {
+					32F4D2211AB5845F007EF478 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					32F4D23A1AB5845F007EF478 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 32F4D2211AB5845F007EF478;
+					};
+				};
+			};
+			buildConfigurationList = 32F4D21D1AB5845F007EF478 /* Build configuration list for PBXProject "Thrift Cocoa Love" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 32F4D2191AB5845F007EF478;
+			productRefGroup = 32F4D2231AB5845F007EF478 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				32F4D2211AB5845F007EF478 /* Thrift Cocoa Love */,
+				32F4D23A1AB5845F007EF478 /* Thrift Cocoa LoveTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		32F4D2201AB5845F007EF478 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32F4D2311AB5845F007EF478 /* Main.storyboard in Resources */,
+				32F4D2361AB5845F007EF478 /* LaunchScreen.xib in Resources */,
+				32F4D2331AB5845F007EF478 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32F4D2391AB5845F007EF478 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		32F4D21E1AB5845F007EF478 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32F4D22E1AB5845F007EF478 /* ViewController.m in Sources */,
+				32F4D22B1AB5845F007EF478 /* AppDelegate.m in Sources */,
+				32F4D2281AB5845F007EF478 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32F4D2371AB5845F007EF478 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32F4D2421AB5845F007EF478 /* Thrift_Cocoa_LoveTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		32F4D23D1AB5845F007EF478 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32F4D2211AB5845F007EF478 /* Thrift Cocoa Love */;
+			targetProxy = 32F4D23C1AB5845F007EF478 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		32F4D22F1AB5845F007EF478 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32F4D2301AB5845F007EF478 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		32F4D2341AB5845F007EF478 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32F4D2351AB5845F007EF478 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		32F4D2431AB5845F007EF478 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		32F4D2441AB5845F007EF478 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		32F4D2461AB5845F007EF478 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Thrift Cocoa Love/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		32F4D2471AB5845F007EF478 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Thrift Cocoa Love/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		32F4D2491AB5845F007EF478 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Thrift Cocoa LoveTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Thrift Cocoa Love.app/Thrift Cocoa Love";
+			};
+			name = Debug;
+		};
+		32F4D24A1AB5845F007EF478 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Thrift Cocoa LoveTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Thrift Cocoa Love.app/Thrift Cocoa Love";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		32F4D21D1AB5845F007EF478 /* Build configuration list for PBXProject "Thrift Cocoa Love" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32F4D2431AB5845F007EF478 /* Debug */,
+				32F4D2441AB5845F007EF478 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32F4D2451AB5845F007EF478 /* Build configuration list for PBXNativeTarget "Thrift Cocoa Love" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32F4D2461AB5845F007EF478 /* Debug */,
+				32F4D2471AB5845F007EF478 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		32F4D2481AB5845F007EF478 /* Build configuration list for PBXNativeTarget "Thrift Cocoa LoveTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32F4D2491AB5845F007EF478 /* Debug */,
+				32F4D24A1AB5845F007EF478 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 32F4D21A1AB5845F007EF478 /* Project object */;
+}

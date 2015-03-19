@@ -1,5 +1,5 @@
 diff --git a/gen-cocoa/orig/asdf.h b/gen-cocoa/no_clients/asdf.h
-index 4d4ce59..a089630 100644
+index 8cef031..cf72673 100644
 --- a/gen-cocoa/orig/asdf.h
 +++ b/gen-cocoa/no_clients/asdf.h
 @@ -14,6 +14,9 @@
@@ -12,7 +12,7 @@ index 4d4ce59..a089630 100644
  
  
  @interface asdfAuthenticationEnvelope : NSObject <TBase, NSCoding> {
-@@ -46,11 +49,7 @@
+@@ -90,11 +93,7 @@
  - (int32_t) ping: (asdfAuthenticationEnvelope *) envelope;  // throws TException
  @end
  
@@ -25,7 +25,7 @@ index 4d4ce59..a089630 100644
  - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
  @end
  
-@@ -67,11 +66,7 @@
+@@ -111,11 +110,7 @@
  - (int32_t) ping12: (asdfAuthenticationEnvelope *) envelope;  // throws TException
  @end
  
@@ -38,8 +38,8 @@ index 4d4ce59..a089630 100644
  - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
  @end
  
-@@ -88,11 +83,7 @@ NSDictionary * mMethodMap;
- - (int32_t) ping22: (asdfAuthenticationEnvelope *) envelope;  // throws TException
+@@ -133,11 +128,7 @@ NSDictionary * mMethodMap;
+ - (int32_t) ping23: (asdfAuthenticationEnvelope *) envelope;  // throws TException
  @end
  
 -@interface asdfAuthenticatedService2Client : NSObject <asdfAuthenticatedService2> {
@@ -48,32 +48,6 @@ index 4d4ce59..a089630 100644
 -}
 -- (id) initWithProtocol: (id <TProtocol>) protocol;
 +@interface asdfAuthenticatedService2Client : TBaseClient <asdfAuthenticatedService2> - (id) initWithProtocol: (id <TProtocol>) protocol;
- - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
- @end
- 
-@@ -109,11 +100,7 @@ NSDictionary * mMethodMap;
- - (int32_t) ping32: (asdfAuthenticationEnvelope *) envelope;  // throws TException
- @end
- 
--@interface asdfAuthenticatedService3Client : NSObject <asdfAuthenticatedService3> {
--id <TProtocol> inProtocol;
--id <TProtocol> outProtocol;
--}
--- (id) initWithProtocol: (id <TProtocol>) protocol;
-+@interface asdfAuthenticatedService3Client : TBaseClient <asdfAuthenticatedService3> - (id) initWithProtocol: (id <TProtocol>) protocol;
- - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
- @end
- 
-@@ -130,11 +117,7 @@ NSDictionary * mMethodMap;
- - (int32_t) ping42: (asdfAuthenticationEnvelope *) envelope;  // throws TException
- @end
- 
--@interface asdfAuthenticatedService4Client : NSObject <asdfAuthenticatedService4> {
--id <TProtocol> inProtocol;
--id <TProtocol> outProtocol;
--}
--- (id) initWithProtocol: (id <TProtocol>) protocol;
-+@interface asdfAuthenticatedService4Client : TBaseClient <asdfAuthenticatedService4> - (id) initWithProtocol: (id <TProtocol>) protocol;
  - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
  @end
  

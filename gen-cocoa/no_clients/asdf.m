@@ -176,6 +176,278 @@
 
 @end
 
+@implementation asdfcapitalizationStruct
+
+- (id) init
+{
+  self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+  return self;
+}
+
+- (id) initWithToken: (asdfAuthenticationEnvelope *) Token token: (NSString *) token toKen: (int32_t) toKen
+{
+  self = [super init];
+  __Token = [Token retain_stub];
+  __Token_isset = YES;
+  __token = [token retain_stub];
+  __token_isset = YES;
+  __toKen = toKen;
+  __toKen_isset = YES;
+  return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+  self = [super init];
+  if ([decoder containsValueForKey: @"Token"])
+  {
+    __Token = [[decoder decodeObjectForKey: @"Token"] retain_stub];
+    __Token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"token"])
+  {
+    __token = [[decoder decodeObjectForKey: @"token"] retain_stub];
+    __token_isset = YES;
+  }
+  if ([decoder containsValueForKey: @"toKen"])
+  {
+    __toKen = [decoder decodeInt32ForKey: @"toKen"];
+    __toKen_isset = YES;
+  }
+  return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+  if (__Token_isset)
+  {
+    [encoder encodeObject: __Token forKey: @"Token"];
+  }
+  if (__token_isset)
+  {
+    [encoder encodeObject: __token forKey: @"token"];
+  }
+  if (__toKen_isset)
+  {
+    [encoder encodeInt32: __toKen forKey: @"toKen"];
+  }
+}
+
+- (NSUInteger) hash
+{
+  NSUInteger hash = 17;
+  hash = (hash * 31) ^ __Token_isset ? 2654435761 : 0;
+  if (__Token_isset)
+  {
+    hash = (hash * 31) ^ [__Token hash];
+  }
+  hash = (hash * 31) ^ __token_isset ? 2654435761 : 0;
+  if (__token_isset)
+  {
+    hash = (hash * 31) ^ [__token hash];
+  }
+  hash = (hash * 31) ^ __toKen_isset ? 2654435761 : 0;
+  if (__toKen_isset)
+  {
+    hash = (hash * 31) ^ [@(__toKen) hash];
+  }
+  return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+  if (self == anObject) {
+    return YES;
+  }
+  if (![anObject isKindOfClass:[asdfcapitalizationStruct class]]) {
+    return NO;
+  }
+  asdfcapitalizationStruct *other = (asdfcapitalizationStruct *)anObject;
+  if ((__Token_isset != other->__Token_isset) ||
+      (__Token_isset && ((__Token || other->__Token) && ![__Token isEqual:other->__Token]))) {
+    return NO;
+  }
+  if ((__token_isset != other->__token_isset) ||
+      (__token_isset && ((__token || other->__token) && ![__token isEqual:other->__token]))) {
+    return NO;
+  }
+  if ((__toKen_isset != other->__toKen_isset) ||
+      (__toKen_isset && (__toKen != other->__toKen))) {
+    return NO;
+  }
+  return YES;
+}
+
+- (void) dealloc
+{
+  [__Token release_stub];
+  [__token release_stub];
+  [super dealloc_stub];
+}
+
+- (asdfAuthenticationEnvelope *) Token {
+  return [[__Token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (asdfAuthenticationEnvelope *) Token {
+  [Token retain_stub];
+  [__Token release_stub];
+  __Token = Token;
+  __Token_isset = YES;
+}
+
+- (BOOL) TokenIsSet {
+  return __Token_isset;
+}
+
+- (void) unsetToken {
+  [__Token release_stub];
+  __Token = nil;
+  __Token_isset = NO;
+}
+
+- (NSString *) token {
+  return [[__token retain_stub] autorelease_stub];
+}
+
+- (void) setToken: (NSString *) token {
+  [token retain_stub];
+  [__token release_stub];
+  __token = token;
+  __token_isset = YES;
+}
+
+- (BOOL) tokenIsSet {
+  return __token_isset;
+}
+
+- (void) unsetToken {
+  [__token release_stub];
+  __token = nil;
+  __token_isset = NO;
+}
+
+- (int32_t) toKen {
+  return __toKen;
+}
+
+- (void) setToKen: (int32_t) toKen {
+  __toKen = toKen;
+  __toKen_isset = YES;
+}
+
+- (BOOL) toKenIsSet {
+  return __toKen_isset;
+}
+
+- (void) unsetToKen {
+  __toKen_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+  NSString * fieldName;
+  int fieldType;
+  int fieldID;
+
+  [inProtocol readStructBeginReturningName: NULL];
+  while (true)
+  {
+    [inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+    if (fieldType == TType_STOP) { 
+      break;
+    }
+    switch (fieldID)
+    {
+      case 1:
+        if (fieldType == TType_STRUCT) {
+          asdfAuthenticationEnvelope *fieldValue = [[asdfAuthenticationEnvelope alloc] init];
+          [fieldValue read: inProtocol];
+          [self setToken: fieldValue];
+          [fieldValue release_stub];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 2:
+        if (fieldType == TType_STRING) {
+          NSString * fieldValue = [inProtocol readString];
+          [self setToken: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      case 3:
+        if (fieldType == TType_I32) {
+          int32_t fieldValue = [inProtocol readI32];
+          [self setToKen: fieldValue];
+        } else { 
+          [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        }
+        break;
+      default:
+        [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+        break;
+    }
+    [inProtocol readFieldEnd];
+  }
+  [inProtocol readStructEnd];
+  [self validate];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+  [outProtocol writeStructBeginWithName: @"capitalizationStruct"];
+  if (__Token_isset) {
+    if (__Token != nil) {
+      [outProtocol writeFieldBeginWithName: @"Token" type: TType_STRUCT fieldID: 1];
+      [__Token write: outProtocol];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__token_isset) {
+    if (__token != nil) {
+      [outProtocol writeFieldBeginWithName: @"token" type: TType_STRING fieldID: 2];
+      [outProtocol writeString: __token];
+      [outProtocol writeFieldEnd];
+    }
+  }
+  if (__toKen_isset) {
+    [outProtocol writeFieldBeginWithName: @"toKen" type: TType_I32 fieldID: 3];
+    [outProtocol writeI32: __toKen];
+    [outProtocol writeFieldEnd];
+  }
+  [outProtocol writeFieldStop];
+  [outProtocol writeStructEnd];
+}
+
+- (void) validate {
+  // check for required fields
+  if (!__Token_isset) {
+    @throw [TProtocolException exceptionWithName: @"TProtocolException"
+                               reason: @"Required field 'Token' is not set."];
+  }
+  if (!__toKen_isset) {
+    @throw [TProtocolException exceptionWithName: @"TProtocolException"
+                               reason: @"Required field 'toKen' is not set."];
+  }
+}
+
+- (NSString *) description {
+  NSMutableString * ms = [NSMutableString stringWithString: @"asdfcapitalizationStruct("];
+  [ms appendString: @"Token:"];
+  [ms appendFormat: @"%@", __Token];
+  [ms appendString: @",token:"];
+  [ms appendFormat: @"\"%@\"", __token];
+  [ms appendString: @",toKen:"];
+  [ms appendFormat: @"%i", __toKen];
+  [ms appendString: @")"];
+  return [NSString stringWithString: ms];
+}
+
+@end
+
 
 @implementation asdfasdfConstants
 + (void) initialize {
@@ -2270,6 +2542,356 @@ return [NSString stringWithString: ms];
 
 @end
 
+@interface asdfping23_args : NSObject <TBase, NSCoding> {
+asdfAuthenticationEnvelope * __envelope;
+
+BOOL __envelope_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, retain, getter=envelope, setter=setEnvelope:) asdfAuthenticationEnvelope * envelope;
+#endif
+
+- (id) init;
+- (id) initWithEnvelope: (asdfAuthenticationEnvelope *) envelope;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (asdfAuthenticationEnvelope *) envelope;
+- (void) setEnvelope: (asdfAuthenticationEnvelope *) envelope;
+#endif
+- (BOOL) envelopeIsSet;
+
+@end
+
+@implementation asdfping23_args
+
+- (id) init
+{
+self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+return self;
+}
+
+- (id) initWithEnvelope: (asdfAuthenticationEnvelope *) envelope
+{
+self = [super init];
+__envelope = [envelope retain_stub];
+__envelope_isset = YES;
+return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+self = [super init];
+if ([decoder containsValueForKey: @"envelope"])
+{
+__envelope = [[decoder decodeObjectForKey: @"envelope"] retain_stub];
+__envelope_isset = YES;
+}
+return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+if (__envelope_isset)
+{
+[encoder encodeObject: __envelope forKey: @"envelope"];
+}
+}
+
+- (NSUInteger) hash
+{
+NSUInteger hash = 17;
+hash = (hash * 31) ^ __envelope_isset ? 2654435761 : 0;
+if (__envelope_isset)
+{
+hash = (hash * 31) ^ [__envelope hash];
+}
+return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+if (self == anObject) {
+return YES;
+}
+if (![anObject isKindOfClass:[asdfping23_args class]]) {
+return NO;
+}
+asdfping23_args *other = (asdfping23_args *)anObject;
+if ((__envelope_isset != other->__envelope_isset) ||
+    (__envelope_isset && ((__envelope || other->__envelope) && ![__envelope isEqual:other->__envelope]))) {
+return NO;
+}
+return YES;
+}
+
+- (void) dealloc
+{
+[__envelope release_stub];
+[super dealloc_stub];
+}
+
+- (asdfAuthenticationEnvelope *) envelope {
+return [[__envelope retain_stub] autorelease_stub];
+}
+
+- (void) setEnvelope: (asdfAuthenticationEnvelope *) envelope {
+[envelope retain_stub];
+[__envelope release_stub];
+__envelope = envelope;
+__envelope_isset = YES;
+}
+
+- (BOOL) envelopeIsSet {
+return __envelope_isset;
+}
+
+- (void) unsetEnvelope {
+[__envelope release_stub];
+__envelope = nil;
+__envelope_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+NSString * fieldName;
+int fieldType;
+int fieldID;
+
+[inProtocol readStructBeginReturningName: NULL];
+while (true)
+{
+[inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+if (fieldType == TType_STOP) { 
+  break;
+}
+switch (fieldID)
+{
+  case 1:
+    if (fieldType == TType_STRUCT) {
+      asdfAuthenticationEnvelope *fieldValue = [[asdfAuthenticationEnvelope alloc] init];
+      [fieldValue read: inProtocol];
+      [self setEnvelope: fieldValue];
+      [fieldValue release_stub];
+    } else { 
+      [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+    }
+    break;
+  default:
+    [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+    break;
+}
+[inProtocol readFieldEnd];
+}
+[inProtocol readStructEnd];
+[self validate];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+[outProtocol writeStructBeginWithName: @"ping23_args"];
+if (__envelope_isset) {
+if (__envelope != nil) {
+  [outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
+  [__envelope write: outProtocol];
+  [outProtocol writeFieldEnd];
+}
+}
+[outProtocol writeFieldStop];
+[outProtocol writeStructEnd];
+}
+
+- (void) validate {
+// check for required fields
+}
+
+- (NSString *) description {
+NSMutableString * ms = [NSMutableString stringWithString: @"asdfping23_args("];
+[ms appendString: @"envelope:"];
+[ms appendFormat: @"%@", __envelope];
+[ms appendString: @")"];
+return [NSString stringWithString: ms];
+}
+
+@end
+
+@interface asdfPing23_result : NSObject <TBase, NSCoding> {
+int32_t __success;
+
+BOOL __success_isset;
+}
+
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+@property (nonatomic, getter=success, setter=setSuccess:) int32_t success;
+#endif
+
+- (id) init;
+- (id) initWithSuccess: (int32_t) success;
+
+- (void) read: (id <TProtocol>) inProtocol;
+- (void) write: (id <TProtocol>) outProtocol;
+
+- (void) validate;
+
+#if !__has_feature(objc_arc)
+- (int32_t) success;
+- (void) setSuccess: (int32_t) success;
+#endif
+- (BOOL) successIsSet;
+
+@end
+
+@implementation asdfPing23_result
+
+- (id) init
+{
+self = [super init];
+#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+#endif
+return self;
+}
+
+- (id) initWithSuccess: (int32_t) success
+{
+self = [super init];
+__success = success;
+__success_isset = YES;
+return self;
+}
+
+- (id) initWithCoder: (NSCoder *) decoder
+{
+self = [super init];
+if ([decoder containsValueForKey: @"success"])
+{
+__success = [decoder decodeInt32ForKey: @"success"];
+__success_isset = YES;
+}
+return self;
+}
+
+- (void) encodeWithCoder: (NSCoder *) encoder
+{
+if (__success_isset)
+{
+[encoder encodeInt32: __success forKey: @"success"];
+}
+}
+
+- (NSUInteger) hash
+{
+NSUInteger hash = 17;
+hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
+if (__success_isset)
+{
+hash = (hash * 31) ^ [@(__success) hash];
+}
+return hash;
+}
+
+- (BOOL) isEqual: (id) anObject
+{
+if (self == anObject) {
+return YES;
+}
+if (![anObject isKindOfClass:[asdfPing23_result class]]) {
+return NO;
+}
+asdfPing23_result *other = (asdfPing23_result *)anObject;
+if ((__success_isset != other->__success_isset) ||
+    (__success_isset && (__success != other->__success))) {
+return NO;
+}
+return YES;
+}
+
+- (void) dealloc
+{
+[super dealloc_stub];
+}
+
+- (int32_t) success {
+return __success;
+}
+
+- (void) setSuccess: (int32_t) success {
+__success = success;
+__success_isset = YES;
+}
+
+- (BOOL) successIsSet {
+return __success_isset;
+}
+
+- (void) unsetSuccess {
+__success_isset = NO;
+}
+
+- (void) read: (id <TProtocol>) inProtocol
+{
+NSString * fieldName;
+int fieldType;
+int fieldID;
+
+[inProtocol readStructBeginReturningName: NULL];
+while (true)
+{
+[inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
+if (fieldType == TType_STOP) { 
+  break;
+}
+switch (fieldID)
+{
+  case 0:
+    if (fieldType == TType_I32) {
+      int32_t fieldValue = [inProtocol readI32];
+      [self setSuccess: fieldValue];
+    } else { 
+      [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+    }
+    break;
+  default:
+    [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
+    break;
+}
+[inProtocol readFieldEnd];
+}
+[inProtocol readStructEnd];
+[self validate];
+}
+
+- (void) write: (id <TProtocol>) outProtocol {
+[outProtocol writeStructBeginWithName: @"Ping23_result"];
+
+if (__success_isset) {
+[outProtocol writeFieldBeginWithName: @"success" type: TType_I32 fieldID: 0];
+[outProtocol writeI32: __success];
+[outProtocol writeFieldEnd];
+}
+[outProtocol writeFieldStop];
+[outProtocol writeStructEnd];
+}
+
+- (void) validate {
+// check for required fields
+}
+
+- (NSString *) description {
+NSMutableString * ms = [NSMutableString stringWithString: @"asdfPing23_result("];
+[ms appendString: @"success:"];
+[ms appendFormat: @"%i", __success];
+[ms appendString: @")"];
+return [NSString stringWithString: ms];
+}
+
+@end
+
 @implementation asdfAuthenticatedService2Client
 - (id) initWithProtocol: (id <TProtocol>) protocol
 {
@@ -2358,6 +2980,43 @@ if ([result successIsSet]) {
 return [self recv_ping22];
 }
 
+- (void) send_ping23: (asdfAuthenticationEnvelope *) envelope
+{
+[outProtocol writeMessageBeginWithName: @"ping23" type: TMessageType_CALL sequenceID: 0];
+[outProtocol writeStructBeginWithName: @"ping23_args"];
+if (envelope != nil){
+[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
+[envelope write: outProtocol];
+[outProtocol writeFieldEnd];
+}
+[outProtocol writeFieldStop];
+[outProtocol writeStructEnd];
+[outProtocol writeMessageEnd];
+}
+
+- (int32_t) recv_ping23
+{
+TApplicationException * x = [self checkIncomingMessageException];
+if (x != nil){
+@throw x;
+}
+asdfPing23_result * result = [[[asdfPing23_result alloc] init] autorelease_stub];
+[result read: inProtocol];
+[inProtocol readMessageEnd];
+if ([result successIsSet]) {
+  return [result success];
+}
+@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
+                                         reason: @"ping23 failed: unknown result"];
+}
+
+- (int32_t) ping23: (asdfAuthenticationEnvelope *) envelope
+{
+[self send_ping23 : envelope];
+[[outProtocol transport] flush];
+return [self recv_ping23];
+}
+
 @end
 
 @implementation asdfAuthenticatedService2Processor
@@ -2385,6 +3044,14 @@ NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
 [invocation setSelector: s];
 [invocation retainArguments];
 [mMethodMap setValue: invocation forKey: @"ping22"];
+}
+{
+SEL s = @selector(process_ping23_withSequenceID:inProtocol:outProtocol:);
+NSMethodSignature * sig = [self methodSignatureForSelector: s];
+NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
+[invocation setSelector: s];
+[invocation retainArguments];
+[mMethodMap setValue: invocation forKey: @"ping23"];
 }
 return self;
 }
@@ -2461,1797 +3128,14 @@ asdfPing22_result * result = [[asdfPing22_result alloc] init];
 [args release_stub];
 }
 
-- (void) dealloc
+- (void) process_ping23_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
 {
-[mService release_stub];
-[mMethodMap release_stub];
-[super dealloc_stub];
-}
-
-@end
-
-@interface asdfping31_args : NSObject <TBase, NSCoding> {
-asdfAuthenticationEnvelope * __envelope;
-
-BOOL __envelope_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=envelope, setter=setEnvelope:) asdfAuthenticationEnvelope * envelope;
-#endif
-
-- (id) init;
-- (id) initWithEnvelope: (asdfAuthenticationEnvelope *) envelope;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (asdfAuthenticationEnvelope *) envelope;
-- (void) setEnvelope: (asdfAuthenticationEnvelope *) envelope;
-#endif
-- (BOOL) envelopeIsSet;
-
-@end
-
-@implementation asdfping31_args
-
-- (id) init
-{
-self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-return self;
-}
-
-- (id) initWithEnvelope: (asdfAuthenticationEnvelope *) envelope
-{
-self = [super init];
-__envelope = [envelope retain_stub];
-__envelope_isset = YES;
-return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-self = [super init];
-if ([decoder containsValueForKey: @"envelope"])
-{
-__envelope = [[decoder decodeObjectForKey: @"envelope"] retain_stub];
-__envelope_isset = YES;
-}
-return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-if (__envelope_isset)
-{
-[encoder encodeObject: __envelope forKey: @"envelope"];
-}
-}
-
-- (NSUInteger) hash
-{
-NSUInteger hash = 17;
-hash = (hash * 31) ^ __envelope_isset ? 2654435761 : 0;
-if (__envelope_isset)
-{
-hash = (hash * 31) ^ [__envelope hash];
-}
-return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-if (self == anObject) {
-return YES;
-}
-if (![anObject isKindOfClass:[asdfping31_args class]]) {
-return NO;
-}
-asdfping31_args *other = (asdfping31_args *)anObject;
-if ((__envelope_isset != other->__envelope_isset) ||
-    (__envelope_isset && ((__envelope || other->__envelope) && ![__envelope isEqual:other->__envelope]))) {
-return NO;
-}
-return YES;
-}
-
-- (void) dealloc
-{
-[__envelope release_stub];
-[super dealloc_stub];
-}
-
-- (asdfAuthenticationEnvelope *) envelope {
-return [[__envelope retain_stub] autorelease_stub];
-}
-
-- (void) setEnvelope: (asdfAuthenticationEnvelope *) envelope {
-[envelope retain_stub];
-[__envelope release_stub];
-__envelope = envelope;
-__envelope_isset = YES;
-}
-
-- (BOOL) envelopeIsSet {
-return __envelope_isset;
-}
-
-- (void) unsetEnvelope {
-[__envelope release_stub];
-__envelope = nil;
-__envelope_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-NSString * fieldName;
-int fieldType;
-int fieldID;
-
-[inProtocol readStructBeginReturningName: NULL];
-while (true)
-{
-[inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-if (fieldType == TType_STOP) { 
-break;
-}
-switch (fieldID)
-{
-case 1:
-  if (fieldType == TType_STRUCT) {
-    asdfAuthenticationEnvelope *fieldValue = [[asdfAuthenticationEnvelope alloc] init];
-    [fieldValue read: inProtocol];
-    [self setEnvelope: fieldValue];
-    [fieldValue release_stub];
-  } else { 
-    [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-  }
-  break;
-default:
-  [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-  break;
-}
-[inProtocol readFieldEnd];
-}
-[inProtocol readStructEnd];
-[self validate];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-[outProtocol writeStructBeginWithName: @"ping31_args"];
-if (__envelope_isset) {
-if (__envelope != nil) {
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[__envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-}
-
-- (void) validate {
-// check for required fields
-}
-
-- (NSString *) description {
-NSMutableString * ms = [NSMutableString stringWithString: @"asdfping31_args("];
-[ms appendString: @"envelope:"];
-[ms appendFormat: @"%@", __envelope];
-[ms appendString: @")"];
-return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface asdfPing31_result : NSObject <TBase, NSCoding> {
-int32_t __success;
-
-BOOL __success_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, getter=success, setter=setSuccess:) int32_t success;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (int32_t) success;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (int32_t) success;
-- (void) setSuccess: (int32_t) success;
-#endif
-- (BOOL) successIsSet;
-
-@end
-
-@implementation asdfPing31_result
-
-- (id) init
-{
-self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-return self;
-}
-
-- (id) initWithSuccess: (int32_t) success
-{
-self = [super init];
-__success = success;
-__success_isset = YES;
-return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-self = [super init];
-if ([decoder containsValueForKey: @"success"])
-{
-__success = [decoder decodeInt32ForKey: @"success"];
-__success_isset = YES;
-}
-return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-if (__success_isset)
-{
-[encoder encodeInt32: __success forKey: @"success"];
-}
-}
-
-- (NSUInteger) hash
-{
-NSUInteger hash = 17;
-hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-if (__success_isset)
-{
-hash = (hash * 31) ^ [@(__success) hash];
-}
-return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-if (self == anObject) {
-return YES;
-}
-if (![anObject isKindOfClass:[asdfPing31_result class]]) {
-return NO;
-}
-asdfPing31_result *other = (asdfPing31_result *)anObject;
-if ((__success_isset != other->__success_isset) ||
-    (__success_isset && (__success != other->__success))) {
-return NO;
-}
-return YES;
-}
-
-- (void) dealloc
-{
-[super dealloc_stub];
-}
-
-- (int32_t) success {
-return __success;
-}
-
-- (void) setSuccess: (int32_t) success {
-__success = success;
-__success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-return __success_isset;
-}
-
-- (void) unsetSuccess {
-__success_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-NSString * fieldName;
-int fieldType;
-int fieldID;
-
-[inProtocol readStructBeginReturningName: NULL];
-while (true)
-{
-[inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-if (fieldType == TType_STOP) { 
-break;
-}
-switch (fieldID)
-{
-case 0:
-  if (fieldType == TType_I32) {
-    int32_t fieldValue = [inProtocol readI32];
-    [self setSuccess: fieldValue];
-  } else { 
-    [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-  }
-  break;
-default:
-  [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-  break;
-}
-[inProtocol readFieldEnd];
-}
-[inProtocol readStructEnd];
-[self validate];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-[outProtocol writeStructBeginWithName: @"Ping31_result"];
-
-if (__success_isset) {
-[outProtocol writeFieldBeginWithName: @"success" type: TType_I32 fieldID: 0];
-[outProtocol writeI32: __success];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-}
-
-- (void) validate {
-// check for required fields
-}
-
-- (NSString *) description {
-NSMutableString * ms = [NSMutableString stringWithString: @"asdfPing31_result("];
-[ms appendString: @"success:"];
-[ms appendFormat: @"%i", __success];
-[ms appendString: @")"];
-return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface asdfping32_args : NSObject <TBase, NSCoding> {
-asdfAuthenticationEnvelope * __envelope;
-
-BOOL __envelope_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=envelope, setter=setEnvelope:) asdfAuthenticationEnvelope * envelope;
-#endif
-
-- (id) init;
-- (id) initWithEnvelope: (asdfAuthenticationEnvelope *) envelope;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (asdfAuthenticationEnvelope *) envelope;
-- (void) setEnvelope: (asdfAuthenticationEnvelope *) envelope;
-#endif
-- (BOOL) envelopeIsSet;
-
-@end
-
-@implementation asdfping32_args
-
-- (id) init
-{
-self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-return self;
-}
-
-- (id) initWithEnvelope: (asdfAuthenticationEnvelope *) envelope
-{
-self = [super init];
-__envelope = [envelope retain_stub];
-__envelope_isset = YES;
-return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-self = [super init];
-if ([decoder containsValueForKey: @"envelope"])
-{
-__envelope = [[decoder decodeObjectForKey: @"envelope"] retain_stub];
-__envelope_isset = YES;
-}
-return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-if (__envelope_isset)
-{
-[encoder encodeObject: __envelope forKey: @"envelope"];
-}
-}
-
-- (NSUInteger) hash
-{
-NSUInteger hash = 17;
-hash = (hash * 31) ^ __envelope_isset ? 2654435761 : 0;
-if (__envelope_isset)
-{
-hash = (hash * 31) ^ [__envelope hash];
-}
-return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-if (self == anObject) {
-return YES;
-}
-if (![anObject isKindOfClass:[asdfping32_args class]]) {
-return NO;
-}
-asdfping32_args *other = (asdfping32_args *)anObject;
-if ((__envelope_isset != other->__envelope_isset) ||
-    (__envelope_isset && ((__envelope || other->__envelope) && ![__envelope isEqual:other->__envelope]))) {
-return NO;
-}
-return YES;
-}
-
-- (void) dealloc
-{
-[__envelope release_stub];
-[super dealloc_stub];
-}
-
-- (asdfAuthenticationEnvelope *) envelope {
-return [[__envelope retain_stub] autorelease_stub];
-}
-
-- (void) setEnvelope: (asdfAuthenticationEnvelope *) envelope {
-[envelope retain_stub];
-[__envelope release_stub];
-__envelope = envelope;
-__envelope_isset = YES;
-}
-
-- (BOOL) envelopeIsSet {
-return __envelope_isset;
-}
-
-- (void) unsetEnvelope {
-[__envelope release_stub];
-__envelope = nil;
-__envelope_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-NSString * fieldName;
-int fieldType;
-int fieldID;
-
-[inProtocol readStructBeginReturningName: NULL];
-while (true)
-{
-[inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-if (fieldType == TType_STOP) { 
-break;
-}
-switch (fieldID)
-{
-case 1:
-  if (fieldType == TType_STRUCT) {
-    asdfAuthenticationEnvelope *fieldValue = [[asdfAuthenticationEnvelope alloc] init];
-    [fieldValue read: inProtocol];
-    [self setEnvelope: fieldValue];
-    [fieldValue release_stub];
-  } else { 
-    [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-  }
-  break;
-default:
-  [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-  break;
-}
-[inProtocol readFieldEnd];
-}
-[inProtocol readStructEnd];
-[self validate];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-[outProtocol writeStructBeginWithName: @"ping32_args"];
-if (__envelope_isset) {
-if (__envelope != nil) {
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[__envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-}
-
-- (void) validate {
-// check for required fields
-}
-
-- (NSString *) description {
-NSMutableString * ms = [NSMutableString stringWithString: @"asdfping32_args("];
-[ms appendString: @"envelope:"];
-[ms appendFormat: @"%@", __envelope];
-[ms appendString: @")"];
-return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface asdfPing32_result : NSObject <TBase, NSCoding> {
-int32_t __success;
-
-BOOL __success_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, getter=success, setter=setSuccess:) int32_t success;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (int32_t) success;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (int32_t) success;
-- (void) setSuccess: (int32_t) success;
-#endif
-- (BOOL) successIsSet;
-
-@end
-
-@implementation asdfPing32_result
-
-- (id) init
-{
-self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-return self;
-}
-
-- (id) initWithSuccess: (int32_t) success
-{
-self = [super init];
-__success = success;
-__success_isset = YES;
-return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-self = [super init];
-if ([decoder containsValueForKey: @"success"])
-{
-__success = [decoder decodeInt32ForKey: @"success"];
-__success_isset = YES;
-}
-return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-if (__success_isset)
-{
-[encoder encodeInt32: __success forKey: @"success"];
-}
-}
-
-- (NSUInteger) hash
-{
-NSUInteger hash = 17;
-hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-if (__success_isset)
-{
-hash = (hash * 31) ^ [@(__success) hash];
-}
-return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-if (self == anObject) {
-return YES;
-}
-if (![anObject isKindOfClass:[asdfPing32_result class]]) {
-return NO;
-}
-asdfPing32_result *other = (asdfPing32_result *)anObject;
-if ((__success_isset != other->__success_isset) ||
-    (__success_isset && (__success != other->__success))) {
-return NO;
-}
-return YES;
-}
-
-- (void) dealloc
-{
-[super dealloc_stub];
-}
-
-- (int32_t) success {
-return __success;
-}
-
-- (void) setSuccess: (int32_t) success {
-__success = success;
-__success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-return __success_isset;
-}
-
-- (void) unsetSuccess {
-__success_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-NSString * fieldName;
-int fieldType;
-int fieldID;
-
-[inProtocol readStructBeginReturningName: NULL];
-while (true)
-{
-[inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-if (fieldType == TType_STOP) { 
-break;
-}
-switch (fieldID)
-{
-case 0:
-  if (fieldType == TType_I32) {
-    int32_t fieldValue = [inProtocol readI32];
-    [self setSuccess: fieldValue];
-  } else { 
-    [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-  }
-  break;
-default:
-  [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-  break;
-}
-[inProtocol readFieldEnd];
-}
-[inProtocol readStructEnd];
-[self validate];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-[outProtocol writeStructBeginWithName: @"Ping32_result"];
-
-if (__success_isset) {
-[outProtocol writeFieldBeginWithName: @"success" type: TType_I32 fieldID: 0];
-[outProtocol writeI32: __success];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-}
-
-- (void) validate {
-// check for required fields
-}
-
-- (NSString *) description {
-NSMutableString * ms = [NSMutableString stringWithString: @"asdfPing32_result("];
-[ms appendString: @"success:"];
-[ms appendFormat: @"%i", __success];
-[ms appendString: @")"];
-return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation asdfAuthenticatedService3Client
-- (id) initWithProtocol: (id <TProtocol>) protocol
-{
-return [self initWithInProtocol: protocol outProtocol: protocol];
-}
-
-- (id) initWithInProtocol: (id <TProtocol>) anInProtocol outProtocol: (id <TProtocol>) anOutProtocol
-{
-self = [super init];
-inProtocol = [anInProtocol retain_stub];
-outProtocol = [anOutProtocol retain_stub];
-return self;
-}
-
-- (void) send_ping31: (asdfAuthenticationEnvelope *) envelope
-{
-[outProtocol writeMessageBeginWithName: @"ping31" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"ping31_args"];
-if (envelope != nil){
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int32_t) recv_ping31
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
-}
-asdfPing31_result * result = [[[asdfPing31_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"ping31 failed: unknown result"];
-}
-
-- (int32_t) ping31: (asdfAuthenticationEnvelope *) envelope
-{
-[self send_ping31 : envelope];
-[[outProtocol transport] flush];
-return [self recv_ping31];
-}
-
-- (void) send_ping32: (asdfAuthenticationEnvelope *) envelope
-{
-[outProtocol writeMessageBeginWithName: @"ping32" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"ping32_args"];
-if (envelope != nil){
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int32_t) recv_ping32
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
-}
-asdfPing32_result * result = [[[asdfPing32_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"ping32 failed: unknown result"];
-}
-
-- (int32_t) ping32: (asdfAuthenticationEnvelope *) envelope
-{
-[self send_ping32 : envelope];
-[[outProtocol transport] flush];
-return [self recv_ping32];
-}
-
-@end
-
-@implementation asdfAuthenticatedService3Processor
-
-- (id) initWithAuthenticatedService3: (id <asdfAuthenticatedService3>) service
-{
-self = [super init];
-if (!self) {
-  return nil;
-}
-mService = [service retain_stub];
-mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
-{
-SEL s = @selector(process_ping31_withSequenceID:inProtocol:outProtocol:);
-NSMethodSignature * sig = [self methodSignatureForSelector: s];
-NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-[invocation setSelector: s];
-[invocation retainArguments];
-[mMethodMap setValue: invocation forKey: @"ping31"];
-}
-{
-SEL s = @selector(process_ping32_withSequenceID:inProtocol:outProtocol:);
-NSMethodSignature * sig = [self methodSignatureForSelector: s];
-NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-[invocation setSelector: s];
-[invocation retainArguments];
-[mMethodMap setValue: invocation forKey: @"ping32"];
-}
-return self;
-}
-
-- (id<asdfAuthenticatedService3>) service
-{
-  return [[mService retain_stub] autorelease_stub];
-}
-
-- (BOOL) processOnInputProtocol: (id <TProtocol>) inProtocol
-                 outputProtocol: (id <TProtocol>) outProtocol
-{
-  NSString * messageName;
-  int messageType;
-  int seqID;
-  [inProtocol readMessageBeginReturningName: &messageName
-                                       type: &messageType
-                                 sequenceID: &seqID];
-  NSInvocation * invocation = [mMethodMap valueForKey: messageName];
-  if (invocation == nil) {
-    [TProtocolUtil skipType: TType_STRUCT onProtocol: inProtocol];
-    [inProtocol readMessageEnd];
-    TApplicationException * x = [TApplicationException exceptionWithType: TApplicationException_UNKNOWN_METHOD reason: [NSString stringWithFormat: @"Invalid method name: '%@'", messageName]];
-    [outProtocol writeMessageBeginWithName: messageName
-                                      type: TMessageType_EXCEPTION
-                                sequenceID: seqID];
-    [x write: outProtocol];
-    [outProtocol writeMessageEnd];
-    [[outProtocol transport] flush];
-    return YES;
-  }
-  // NSInvocation does not conform to NSCopying protocol
-  NSInvocation * i = [NSInvocation invocationWithMethodSignature: [invocation methodSignature]];
-  [i setSelector: [invocation selector]];
-  [i setArgument: &seqID atIndex: 2];
-  [i setArgument: &inProtocol atIndex: 3];
-  [i setArgument: &outProtocol atIndex: 4];
-  [i setTarget: self];
-  [i invoke];
-  return YES;
-}
-
-- (void) process_ping31_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-asdfping31_args * args = [[asdfping31_args alloc] init];
+asdfping23_args * args = [[asdfping23_args alloc] init];
 [args read: inProtocol];
 [inProtocol readMessageEnd];
-asdfPing31_result * result = [[asdfPing31_result alloc] init];
-[result setSuccess: [mService ping31: [args envelope]]];
-[outProtocol writeMessageBeginWithName: @"ping31"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_ping32_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-asdfping32_args * args = [[asdfping32_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-asdfPing32_result * result = [[asdfPing32_result alloc] init];
-[result setSuccess: [mService ping32: [args envelope]]];
-[outProtocol writeMessageBeginWithName: @"ping32"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) dealloc
-{
-[mService release_stub];
-[mMethodMap release_stub];
-[super dealloc_stub];
-}
-
-@end
-
-@interface asdfping41_args : NSObject <TBase, NSCoding> {
-asdfAuthenticationEnvelope * __envelope;
-
-BOOL __envelope_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=envelope, setter=setEnvelope:) asdfAuthenticationEnvelope * envelope;
-#endif
-
-- (id) init;
-- (id) initWithEnvelope: (asdfAuthenticationEnvelope *) envelope;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (asdfAuthenticationEnvelope *) envelope;
-- (void) setEnvelope: (asdfAuthenticationEnvelope *) envelope;
-#endif
-- (BOOL) envelopeIsSet;
-
-@end
-
-@implementation asdfping41_args
-
-- (id) init
-{
-self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-return self;
-}
-
-- (id) initWithEnvelope: (asdfAuthenticationEnvelope *) envelope
-{
-self = [super init];
-__envelope = [envelope retain_stub];
-__envelope_isset = YES;
-return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-self = [super init];
-if ([decoder containsValueForKey: @"envelope"])
-{
-__envelope = [[decoder decodeObjectForKey: @"envelope"] retain_stub];
-__envelope_isset = YES;
-}
-return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-if (__envelope_isset)
-{
-[encoder encodeObject: __envelope forKey: @"envelope"];
-}
-}
-
-- (NSUInteger) hash
-{
-NSUInteger hash = 17;
-hash = (hash * 31) ^ __envelope_isset ? 2654435761 : 0;
-if (__envelope_isset)
-{
-hash = (hash * 31) ^ [__envelope hash];
-}
-return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-if (self == anObject) {
-return YES;
-}
-if (![anObject isKindOfClass:[asdfping41_args class]]) {
-return NO;
-}
-asdfping41_args *other = (asdfping41_args *)anObject;
-if ((__envelope_isset != other->__envelope_isset) ||
-    (__envelope_isset && ((__envelope || other->__envelope) && ![__envelope isEqual:other->__envelope]))) {
-return NO;
-}
-return YES;
-}
-
-- (void) dealloc
-{
-[__envelope release_stub];
-[super dealloc_stub];
-}
-
-- (asdfAuthenticationEnvelope *) envelope {
-return [[__envelope retain_stub] autorelease_stub];
-}
-
-- (void) setEnvelope: (asdfAuthenticationEnvelope *) envelope {
-[envelope retain_stub];
-[__envelope release_stub];
-__envelope = envelope;
-__envelope_isset = YES;
-}
-
-- (BOOL) envelopeIsSet {
-return __envelope_isset;
-}
-
-- (void) unsetEnvelope {
-[__envelope release_stub];
-__envelope = nil;
-__envelope_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-NSString * fieldName;
-int fieldType;
-int fieldID;
-
-[inProtocol readStructBeginReturningName: NULL];
-while (true)
-{
-[inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-if (fieldType == TType_STOP) { 
-break;
-}
-switch (fieldID)
-{
-case 1:
-if (fieldType == TType_STRUCT) {
-  asdfAuthenticationEnvelope *fieldValue = [[asdfAuthenticationEnvelope alloc] init];
-  [fieldValue read: inProtocol];
-  [self setEnvelope: fieldValue];
-  [fieldValue release_stub];
-} else { 
-  [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-}
-break;
-default:
-  [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-  break;
-}
-[inProtocol readFieldEnd];
-}
-[inProtocol readStructEnd];
-[self validate];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-[outProtocol writeStructBeginWithName: @"ping41_args"];
-if (__envelope_isset) {
-if (__envelope != nil) {
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[__envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-}
-
-- (void) validate {
-// check for required fields
-}
-
-- (NSString *) description {
-NSMutableString * ms = [NSMutableString stringWithString: @"asdfping41_args("];
-[ms appendString: @"envelope:"];
-[ms appendFormat: @"%@", __envelope];
-[ms appendString: @")"];
-return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface asdfPing41_result : NSObject <TBase, NSCoding> {
-int32_t __success;
-
-BOOL __success_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, getter=success, setter=setSuccess:) int32_t success;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (int32_t) success;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (int32_t) success;
-- (void) setSuccess: (int32_t) success;
-#endif
-- (BOOL) successIsSet;
-
-@end
-
-@implementation asdfPing41_result
-
-- (id) init
-{
-self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-return self;
-}
-
-- (id) initWithSuccess: (int32_t) success
-{
-self = [super init];
-__success = success;
-__success_isset = YES;
-return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-self = [super init];
-if ([decoder containsValueForKey: @"success"])
-{
-__success = [decoder decodeInt32ForKey: @"success"];
-__success_isset = YES;
-}
-return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-if (__success_isset)
-{
-[encoder encodeInt32: __success forKey: @"success"];
-}
-}
-
-- (NSUInteger) hash
-{
-NSUInteger hash = 17;
-hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-if (__success_isset)
-{
-hash = (hash * 31) ^ [@(__success) hash];
-}
-return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-if (self == anObject) {
-return YES;
-}
-if (![anObject isKindOfClass:[asdfPing41_result class]]) {
-return NO;
-}
-asdfPing41_result *other = (asdfPing41_result *)anObject;
-if ((__success_isset != other->__success_isset) ||
-    (__success_isset && (__success != other->__success))) {
-return NO;
-}
-return YES;
-}
-
-- (void) dealloc
-{
-[super dealloc_stub];
-}
-
-- (int32_t) success {
-return __success;
-}
-
-- (void) setSuccess: (int32_t) success {
-__success = success;
-__success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-return __success_isset;
-}
-
-- (void) unsetSuccess {
-__success_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-NSString * fieldName;
-int fieldType;
-int fieldID;
-
-[inProtocol readStructBeginReturningName: NULL];
-while (true)
-{
-[inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-if (fieldType == TType_STOP) { 
-break;
-}
-switch (fieldID)
-{
-case 0:
-if (fieldType == TType_I32) {
-  int32_t fieldValue = [inProtocol readI32];
-  [self setSuccess: fieldValue];
-} else { 
-  [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-}
-break;
-default:
-  [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-  break;
-}
-[inProtocol readFieldEnd];
-}
-[inProtocol readStructEnd];
-[self validate];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-[outProtocol writeStructBeginWithName: @"Ping41_result"];
-
-if (__success_isset) {
-[outProtocol writeFieldBeginWithName: @"success" type: TType_I32 fieldID: 0];
-[outProtocol writeI32: __success];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-}
-
-- (void) validate {
-// check for required fields
-}
-
-- (NSString *) description {
-NSMutableString * ms = [NSMutableString stringWithString: @"asdfPing41_result("];
-[ms appendString: @"success:"];
-[ms appendFormat: @"%i", __success];
-[ms appendString: @")"];
-return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface asdfping42_args : NSObject <TBase, NSCoding> {
-asdfAuthenticationEnvelope * __envelope;
-
-BOOL __envelope_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, retain, getter=envelope, setter=setEnvelope:) asdfAuthenticationEnvelope * envelope;
-#endif
-
-- (id) init;
-- (id) initWithEnvelope: (asdfAuthenticationEnvelope *) envelope;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (asdfAuthenticationEnvelope *) envelope;
-- (void) setEnvelope: (asdfAuthenticationEnvelope *) envelope;
-#endif
-- (BOOL) envelopeIsSet;
-
-@end
-
-@implementation asdfping42_args
-
-- (id) init
-{
-self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-return self;
-}
-
-- (id) initWithEnvelope: (asdfAuthenticationEnvelope *) envelope
-{
-self = [super init];
-__envelope = [envelope retain_stub];
-__envelope_isset = YES;
-return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-self = [super init];
-if ([decoder containsValueForKey: @"envelope"])
-{
-__envelope = [[decoder decodeObjectForKey: @"envelope"] retain_stub];
-__envelope_isset = YES;
-}
-return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-if (__envelope_isset)
-{
-[encoder encodeObject: __envelope forKey: @"envelope"];
-}
-}
-
-- (NSUInteger) hash
-{
-NSUInteger hash = 17;
-hash = (hash * 31) ^ __envelope_isset ? 2654435761 : 0;
-if (__envelope_isset)
-{
-hash = (hash * 31) ^ [__envelope hash];
-}
-return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-if (self == anObject) {
-return YES;
-}
-if (![anObject isKindOfClass:[asdfping42_args class]]) {
-return NO;
-}
-asdfping42_args *other = (asdfping42_args *)anObject;
-if ((__envelope_isset != other->__envelope_isset) ||
-    (__envelope_isset && ((__envelope || other->__envelope) && ![__envelope isEqual:other->__envelope]))) {
-return NO;
-}
-return YES;
-}
-
-- (void) dealloc
-{
-[__envelope release_stub];
-[super dealloc_stub];
-}
-
-- (asdfAuthenticationEnvelope *) envelope {
-return [[__envelope retain_stub] autorelease_stub];
-}
-
-- (void) setEnvelope: (asdfAuthenticationEnvelope *) envelope {
-[envelope retain_stub];
-[__envelope release_stub];
-__envelope = envelope;
-__envelope_isset = YES;
-}
-
-- (BOOL) envelopeIsSet {
-return __envelope_isset;
-}
-
-- (void) unsetEnvelope {
-[__envelope release_stub];
-__envelope = nil;
-__envelope_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-NSString * fieldName;
-int fieldType;
-int fieldID;
-
-[inProtocol readStructBeginReturningName: NULL];
-while (true)
-{
-[inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-if (fieldType == TType_STOP) { 
-break;
-}
-switch (fieldID)
-{
-case 1:
-if (fieldType == TType_STRUCT) {
-  asdfAuthenticationEnvelope *fieldValue = [[asdfAuthenticationEnvelope alloc] init];
-  [fieldValue read: inProtocol];
-  [self setEnvelope: fieldValue];
-  [fieldValue release_stub];
-} else { 
-  [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-}
-break;
-default:
-  [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-  break;
-}
-[inProtocol readFieldEnd];
-}
-[inProtocol readStructEnd];
-[self validate];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-[outProtocol writeStructBeginWithName: @"ping42_args"];
-if (__envelope_isset) {
-if (__envelope != nil) {
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[__envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-}
-
-- (void) validate {
-// check for required fields
-}
-
-- (NSString *) description {
-NSMutableString * ms = [NSMutableString stringWithString: @"asdfping42_args("];
-[ms appendString: @"envelope:"];
-[ms appendFormat: @"%@", __envelope];
-[ms appendString: @")"];
-return [NSString stringWithString: ms];
-}
-
-@end
-
-@interface asdfPing42_result : NSObject <TBase, NSCoding> {
-int32_t __success;
-
-BOOL __success_isset;
-}
-
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-@property (nonatomic, getter=success, setter=setSuccess:) int32_t success;
-#endif
-
-- (id) init;
-- (id) initWithSuccess: (int32_t) success;
-
-- (void) read: (id <TProtocol>) inProtocol;
-- (void) write: (id <TProtocol>) outProtocol;
-
-- (void) validate;
-
-#if !__has_feature(objc_arc)
-- (int32_t) success;
-- (void) setSuccess: (int32_t) success;
-#endif
-- (BOOL) successIsSet;
-
-@end
-
-@implementation asdfPing42_result
-
-- (id) init
-{
-self = [super init];
-#if TARGET_OS_IPHONE || (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
-#endif
-return self;
-}
-
-- (id) initWithSuccess: (int32_t) success
-{
-self = [super init];
-__success = success;
-__success_isset = YES;
-return self;
-}
-
-- (id) initWithCoder: (NSCoder *) decoder
-{
-self = [super init];
-if ([decoder containsValueForKey: @"success"])
-{
-__success = [decoder decodeInt32ForKey: @"success"];
-__success_isset = YES;
-}
-return self;
-}
-
-- (void) encodeWithCoder: (NSCoder *) encoder
-{
-if (__success_isset)
-{
-[encoder encodeInt32: __success forKey: @"success"];
-}
-}
-
-- (NSUInteger) hash
-{
-NSUInteger hash = 17;
-hash = (hash * 31) ^ __success_isset ? 2654435761 : 0;
-if (__success_isset)
-{
-hash = (hash * 31) ^ [@(__success) hash];
-}
-return hash;
-}
-
-- (BOOL) isEqual: (id) anObject
-{
-if (self == anObject) {
-return YES;
-}
-if (![anObject isKindOfClass:[asdfPing42_result class]]) {
-return NO;
-}
-asdfPing42_result *other = (asdfPing42_result *)anObject;
-if ((__success_isset != other->__success_isset) ||
-    (__success_isset && (__success != other->__success))) {
-return NO;
-}
-return YES;
-}
-
-- (void) dealloc
-{
-[super dealloc_stub];
-}
-
-- (int32_t) success {
-return __success;
-}
-
-- (void) setSuccess: (int32_t) success {
-__success = success;
-__success_isset = YES;
-}
-
-- (BOOL) successIsSet {
-return __success_isset;
-}
-
-- (void) unsetSuccess {
-__success_isset = NO;
-}
-
-- (void) read: (id <TProtocol>) inProtocol
-{
-NSString * fieldName;
-int fieldType;
-int fieldID;
-
-[inProtocol readStructBeginReturningName: NULL];
-while (true)
-{
-[inProtocol readFieldBeginReturningName: &fieldName type: &fieldType fieldID: &fieldID];
-if (fieldType == TType_STOP) { 
-break;
-}
-switch (fieldID)
-{
-case 0:
-if (fieldType == TType_I32) {
-  int32_t fieldValue = [inProtocol readI32];
-  [self setSuccess: fieldValue];
-} else { 
-  [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-}
-break;
-default:
-  [TProtocolUtil skipType: fieldType onProtocol: inProtocol];
-  break;
-}
-[inProtocol readFieldEnd];
-}
-[inProtocol readStructEnd];
-[self validate];
-}
-
-- (void) write: (id <TProtocol>) outProtocol {
-[outProtocol writeStructBeginWithName: @"Ping42_result"];
-
-if (__success_isset) {
-[outProtocol writeFieldBeginWithName: @"success" type: TType_I32 fieldID: 0];
-[outProtocol writeI32: __success];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-}
-
-- (void) validate {
-// check for required fields
-}
-
-- (NSString *) description {
-NSMutableString * ms = [NSMutableString stringWithString: @"asdfPing42_result("];
-[ms appendString: @"success:"];
-[ms appendFormat: @"%i", __success];
-[ms appendString: @")"];
-return [NSString stringWithString: ms];
-}
-
-@end
-
-@implementation asdfAuthenticatedService4Client
-- (id) initWithProtocol: (id <TProtocol>) protocol
-{
-return [self initWithInProtocol: protocol outProtocol: protocol];
-}
-
-- (id) initWithInProtocol: (id <TProtocol>) anInProtocol outProtocol: (id <TProtocol>) anOutProtocol
-{
-self = [super init];
-inProtocol = [anInProtocol retain_stub];
-outProtocol = [anOutProtocol retain_stub];
-return self;
-}
-
-- (void) send_ping41: (asdfAuthenticationEnvelope *) envelope
-{
-[outProtocol writeMessageBeginWithName: @"ping41" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"ping41_args"];
-if (envelope != nil){
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int32_t) recv_ping41
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
-}
-asdfPing41_result * result = [[[asdfPing41_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"ping41 failed: unknown result"];
-}
-
-- (int32_t) ping41: (asdfAuthenticationEnvelope *) envelope
-{
-[self send_ping41 : envelope];
-[[outProtocol transport] flush];
-return [self recv_ping41];
-}
-
-- (void) send_ping42: (asdfAuthenticationEnvelope *) envelope
-{
-[outProtocol writeMessageBeginWithName: @"ping42" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"ping42_args"];
-if (envelope != nil){
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int32_t) recv_ping42
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
-}
-asdfPing42_result * result = [[[asdfPing42_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"ping42 failed: unknown result"];
-}
-
-- (int32_t) ping42: (asdfAuthenticationEnvelope *) envelope
-{
-[self send_ping42 : envelope];
-[[outProtocol transport] flush];
-return [self recv_ping42];
-}
-
-@end
-
-@implementation asdfAuthenticatedService4Processor
-
-- (id) initWithAuthenticatedService4: (id <asdfAuthenticatedService4>) service
-{
-self = [super init];
-if (!self) {
-  return nil;
-}
-mService = [service retain_stub];
-mMethodMap = [[NSMutableDictionary dictionary] retain_stub];
-{
-SEL s = @selector(process_ping41_withSequenceID:inProtocol:outProtocol:);
-NSMethodSignature * sig = [self methodSignatureForSelector: s];
-NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-[invocation setSelector: s];
-[invocation retainArguments];
-[mMethodMap setValue: invocation forKey: @"ping41"];
-}
-{
-SEL s = @selector(process_ping42_withSequenceID:inProtocol:outProtocol:);
-NSMethodSignature * sig = [self methodSignatureForSelector: s];
-NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: sig];
-[invocation setSelector: s];
-[invocation retainArguments];
-[mMethodMap setValue: invocation forKey: @"ping42"];
-}
-return self;
-}
-
-- (id<asdfAuthenticatedService4>) service
-{
-  return [[mService retain_stub] autorelease_stub];
-}
-
-- (BOOL) processOnInputProtocol: (id <TProtocol>) inProtocol
-                 outputProtocol: (id <TProtocol>) outProtocol
-{
-  NSString * messageName;
-  int messageType;
-  int seqID;
-  [inProtocol readMessageBeginReturningName: &messageName
-                                       type: &messageType
-                                 sequenceID: &seqID];
-  NSInvocation * invocation = [mMethodMap valueForKey: messageName];
-  if (invocation == nil) {
-    [TProtocolUtil skipType: TType_STRUCT onProtocol: inProtocol];
-    [inProtocol readMessageEnd];
-    TApplicationException * x = [TApplicationException exceptionWithType: TApplicationException_UNKNOWN_METHOD reason: [NSString stringWithFormat: @"Invalid method name: '%@'", messageName]];
-    [outProtocol writeMessageBeginWithName: messageName
-                                      type: TMessageType_EXCEPTION
-                                sequenceID: seqID];
-    [x write: outProtocol];
-    [outProtocol writeMessageEnd];
-    [[outProtocol transport] flush];
-    return YES;
-  }
-  // NSInvocation does not conform to NSCopying protocol
-  NSInvocation * i = [NSInvocation invocationWithMethodSignature: [invocation methodSignature]];
-  [i setSelector: [invocation selector]];
-  [i setArgument: &seqID atIndex: 2];
-  [i setArgument: &inProtocol atIndex: 3];
-  [i setArgument: &outProtocol atIndex: 4];
-  [i setTarget: self];
-  [i invoke];
-  return YES;
-}
-
-- (void) process_ping41_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-asdfping41_args * args = [[asdfping41_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-asdfPing41_result * result = [[asdfPing41_result alloc] init];
-[result setSuccess: [mService ping41: [args envelope]]];
-[outProtocol writeMessageBeginWithName: @"ping41"
-                                  type: TMessageType_REPLY
-                            sequenceID: seqID];
-[result write: outProtocol];
-[outProtocol writeMessageEnd];
-[[outProtocol transport] flush];
-[result release_stub];
-[args release_stub];
-}
-
-- (void) process_ping42_withSequenceID: (int32_t) seqID inProtocol: (id<TProtocol>) inProtocol outProtocol: (id<TProtocol>) outProtocol
-{
-asdfping42_args * args = [[asdfping42_args alloc] init];
-[args read: inProtocol];
-[inProtocol readMessageEnd];
-asdfPing42_result * result = [[asdfPing42_result alloc] init];
-[result setSuccess: [mService ping42: [args envelope]]];
-[outProtocol writeMessageBeginWithName: @"ping42"
+asdfPing23_result * result = [[asdfPing23_result alloc] init];
+[result setSuccess: [mService ping23: [args envelope]]];
+[outProtocol writeMessageBeginWithName: @"ping23"
                                   type: TMessageType_REPLY
                             sequenceID: seqID];
 [result write: outProtocol];

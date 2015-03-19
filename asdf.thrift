@@ -5,6 +5,12 @@ struct AuthenticationEnvelope {
     1: required string token;
 }
 
+struct capitalizationStruct {
+    1: required AuthenticationEnvelope Token;
+    2: optional string token;
+    3: required i32 toKen;
+}
+
 service AuthenticatedService {
     i32 ping(1:AuthenticationEnvelope envelope);
 }
@@ -17,14 +23,5 @@ service AuthenticatedService1 {
 service AuthenticatedService2 {
     i32 ping21(1:AuthenticationEnvelope envelope);
     i32 ping22(1:AuthenticationEnvelope envelope);
-}
-
-service AuthenticatedService3 {
-    i32 ping31(1:AuthenticationEnvelope envelope);
-    i32 ping32(1:AuthenticationEnvelope envelope);
-}
-
-service AuthenticatedService4 {
-    i32 ping41(1:AuthenticationEnvelope envelope);
-    i32 ping42(1:AuthenticationEnvelope envelope);
+    i32 ping23(1:AuthenticationEnvelope envelope);
 }

@@ -14,9 +14,6 @@
 #import "TProcessor.h"
 #import "TObjective-C.h"
 #import "TBase.h"
-#import "TAsyncTransport.h"
-#import "TProtocolFactory.h"
-#import "TBaseClient.h"
 
 
 #import "ThriftTest.h"
@@ -14658,6 +14655,13 @@ static int ThriftTestmyNumberz = 1;
   return self;
 }
 
+- (void) dealloc
+{
+  [inProtocol release_stub];
+  [outProtocol release_stub];
+  [super dealloc_stub];
+}
+
 - (void) send_testVoid
 {
   [outProtocol writeMessageBeginWithName: @"testVoid" type: TMessageType_CALL sequenceID: 0];
@@ -14665,12 +14669,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (void) recv_testVoid
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestVoid_result * result = [[[ThriftTestTestVoid_result alloc] init] autorelease_stub];
@@ -14682,7 +14690,6 @@ static int ThriftTestmyNumberz = 1;
 - (void) testVoid
 {
   [self send_testVoid];
-  [[outProtocol transport] flush];
   [self recv_testVoid];
 }
 
@@ -14698,12 +14705,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (NSString *) recv_testString
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestString_result * result = [[[ThriftTestTestString_result alloc] init] autorelease_stub];
@@ -14719,7 +14730,6 @@ static int ThriftTestmyNumberz = 1;
 - (NSString *) testString: (NSString *) thing
 {
   [self send_testString : thing];
-  [[outProtocol transport] flush];
   return [self recv_testString];
 }
 
@@ -14733,12 +14743,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (uint8_t) recv_testByte
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestByte_result * result = [[[ThriftTestTestByte_result alloc] init] autorelease_stub];
@@ -14754,7 +14768,6 @@ static int ThriftTestmyNumberz = 1;
 - (uint8_t) testByte: (uint8_t) thing
 {
   [self send_testByte : thing];
-  [[outProtocol transport] flush];
   return [self recv_testByte];
 }
 
@@ -14768,12 +14781,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (int32_t) recv_testI32
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestI32_result * result = [[[ThriftTestTestI32_result alloc] init] autorelease_stub];
@@ -14789,7 +14806,6 @@ static int ThriftTestmyNumberz = 1;
 - (int32_t) testI32: (int32_t) thing
 {
   [self send_testI32 : thing];
-  [[outProtocol transport] flush];
   return [self recv_testI32];
 }
 
@@ -14803,12 +14819,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (int64_t) recv_testI64
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestI64_result * result = [[[ThriftTestTestI64_result alloc] init] autorelease_stub];
@@ -14824,7 +14844,6 @@ static int ThriftTestmyNumberz = 1;
 - (int64_t) testI64: (int64_t) thing
 {
   [self send_testI64 : thing];
-  [[outProtocol transport] flush];
   return [self recv_testI64];
 }
 
@@ -14838,12 +14857,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (double) recv_testDouble
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestDouble_result * result = [[[ThriftTestTestDouble_result alloc] init] autorelease_stub];
@@ -14859,7 +14882,6 @@ static int ThriftTestmyNumberz = 1;
 - (double) testDouble: (double) thing
 {
   [self send_testDouble : thing];
-  [[outProtocol transport] flush];
   return [self recv_testDouble];
 }
 
@@ -14875,12 +14897,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (NSData *) recv_testBinary
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestBinary_result * result = [[[ThriftTestTestBinary_result alloc] init] autorelease_stub];
@@ -14896,7 +14922,6 @@ static int ThriftTestmyNumberz = 1;
 - (NSData *) testBinary: (NSData *) thing
 {
   [self send_testBinary : thing];
-  [[outProtocol transport] flush];
   return [self recv_testBinary];
 }
 
@@ -14912,12 +14937,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (ThriftTestXtruct *) recv_testStruct
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestStruct_result * result = [[[ThriftTestTestStruct_result alloc] init] autorelease_stub];
@@ -14933,7 +14962,6 @@ static int ThriftTestmyNumberz = 1;
 - (ThriftTestXtruct *) testStruct: (ThriftTestXtruct *) thing
 {
   [self send_testStruct : thing];
-  [[outProtocol transport] flush];
   return [self recv_testStruct];
 }
 
@@ -14949,12 +14977,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (ThriftTestXtruct2 *) recv_testNest
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestNest_result * result = [[[ThriftTestTestNest_result alloc] init] autorelease_stub];
@@ -14970,7 +15002,6 @@ static int ThriftTestmyNumberz = 1;
 - (ThriftTestXtruct2 *) testNest: (ThriftTestXtruct2 *) thing
 {
   [self send_testNest : thing];
-  [[outProtocol transport] flush];
   return [self recv_testNest];
 }
 
@@ -14996,12 +15027,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (NSMutableDictionary *) recv_testMap
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestMap_result * result = [[[ThriftTestTestMap_result alloc] init] autorelease_stub];
@@ -15017,7 +15052,6 @@ static int ThriftTestmyNumberz = 1;
 - (NSMutableDictionary *) testMap: (NSMutableDictionary *) thing
 {
   [self send_testMap : thing];
-  [[outProtocol transport] flush];
   return [self recv_testMap];
 }
 
@@ -15043,12 +15077,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (NSMutableDictionary *) recv_testStringMap
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestStringMap_result * result = [[[ThriftTestTestStringMap_result alloc] init] autorelease_stub];
@@ -15064,7 +15102,6 @@ static int ThriftTestmyNumberz = 1;
 - (NSMutableDictionary *) testStringMap: (NSMutableDictionary *) thing
 {
   [self send_testStringMap : thing];
-  [[outProtocol transport] flush];
   return [self recv_testStringMap];
 }
 
@@ -15089,12 +15126,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (NSMutableSet *) recv_testSet
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestSet_result * result = [[[ThriftTestTestSet_result alloc] init] autorelease_stub];
@@ -15110,7 +15151,6 @@ static int ThriftTestmyNumberz = 1;
 - (NSMutableSet *) testSet: (NSMutableSet *) thing
 {
   [self send_testSet : thing];
-  [[outProtocol transport] flush];
   return [self recv_testSet];
 }
 
@@ -15134,12 +15174,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (NSMutableArray *) recv_testList
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestList_result * result = [[[ThriftTestTestList_result alloc] init] autorelease_stub];
@@ -15155,7 +15199,6 @@ static int ThriftTestmyNumberz = 1;
 - (NSMutableArray *) testList: (NSMutableArray *) thing
 {
   [self send_testList : thing];
-  [[outProtocol transport] flush];
   return [self recv_testList];
 }
 
@@ -15169,12 +15212,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (int) recv_testEnum
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestEnum_result * result = [[[ThriftTestTestEnum_result alloc] init] autorelease_stub];
@@ -15190,7 +15237,6 @@ static int ThriftTestmyNumberz = 1;
 - (int) testEnum: (int) thing
 {
   [self send_testEnum : thing];
-  [[outProtocol transport] flush];
   return [self recv_testEnum];
 }
 
@@ -15204,12 +15250,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (ThriftTestUserId) recv_testTypedef
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestTypedef_result * result = [[[ThriftTestTestTypedef_result alloc] init] autorelease_stub];
@@ -15225,7 +15275,6 @@ static int ThriftTestmyNumberz = 1;
 - (ThriftTestUserId) testTypedef: (ThriftTestUserId) thing
 {
   [self send_testTypedef : thing];
-  [[outProtocol transport] flush];
   return [self recv_testTypedef];
 }
 
@@ -15239,12 +15288,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (NSMutableDictionary *) recv_testMapMap
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestMapMap_result * result = [[[ThriftTestTestMapMap_result alloc] init] autorelease_stub];
@@ -15260,7 +15313,6 @@ static int ThriftTestmyNumberz = 1;
 - (NSMutableDictionary *) testMapMap: (int32_t) hello
 {
   [self send_testMapMap : hello];
-  [[outProtocol transport] flush];
   return [self recv_testMapMap];
 }
 
@@ -15276,12 +15328,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (NSMutableDictionary *) recv_testInsanity
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestInsanity_result * result = [[[ThriftTestTestInsanity_result alloc] init] autorelease_stub];
@@ -15297,7 +15353,6 @@ static int ThriftTestmyNumberz = 1;
 - (NSMutableDictionary *) testInsanity: (ThriftTestInsanity *) argument
 {
   [self send_testInsanity : argument];
-  [[outProtocol transport] flush];
   return [self recv_testInsanity];
 }
 
@@ -15338,12 +15393,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (ThriftTestXtruct *) recv_testMulti
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestMulti_result * result = [[[ThriftTestTestMulti_result alloc] init] autorelease_stub];
@@ -15359,7 +15418,6 @@ static int ThriftTestmyNumberz = 1;
 - (ThriftTestXtruct *) testMulti: (uint8_t) arg0 arg1: (int32_t) arg1 arg2: (int64_t) arg2 arg3: (NSMutableDictionary *) arg3 arg4: (int) arg4 arg5: (ThriftTestUserId) arg5
 {
   [self send_testMulti : arg0 arg1: arg1 arg2: arg2 arg3: arg3 arg4: arg4 arg5: arg5];
-  [[outProtocol transport] flush];
   return [self recv_testMulti];
 }
 
@@ -15375,12 +15433,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (void) recv_testException
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestException_result * result = [[[ThriftTestTestException_result alloc] init] autorelease_stub];
@@ -15395,7 +15457,6 @@ static int ThriftTestmyNumberz = 1;
 - (void) testException: (NSString *) arg
 {
   [self send_testException : arg];
-  [[outProtocol transport] flush];
   [self recv_testException];
 }
 
@@ -15416,12 +15477,16 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (ThriftTestXtruct *) recv_testMultiException
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   ThriftTestTestMultiException_result * result = [[[ThriftTestTestMultiException_result alloc] init] autorelease_stub];
@@ -15443,7 +15508,6 @@ static int ThriftTestmyNumberz = 1;
 - (ThriftTestXtruct *) testMultiException: (NSString *) arg0 arg1: (NSString *) arg1
 {
   [self send_testMultiException : arg0 arg1: arg1];
-  [[outProtocol transport] flush];
   return [self recv_testMultiException];
 }
 
@@ -15457,12 +15521,12 @@ static int ThriftTestmyNumberz = 1;
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (void) testOneway: (int32_t) secondsToSleep
 {
   [self send_testOneway : secondsToSleep];
-  [[outProtocol transport] flush];
 }
 
 @end
@@ -16044,1039 +16108,6 @@ static int ThriftTestmyNumberz = 1;
 
 @end
 
-@implementation ThriftTestThriftTestClientAsync
-
-- (id) initWithProtocolFactory: (id <TProtocolFactory>) factory transport: (id <TAsyncTransport>) transport;
-{
-self = [super init];
-inProtocol = [[factory newProtocolOnTransport:transport] retain_stub];
-outProtocol = inProtocol;
-asyncTransport = transport;
-return self;
-}
-
-- (void) send_testVoid
-{
-[outProtocol writeMessageBeginWithName: @"testVoid" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testVoid_args"];
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (void) recv_testVoid
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestVoid_result * result = [[[ThriftTestTestVoid_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-return;
-}
-
-- (void) testVoid: (dispatch_block_t) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testVoid];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    [self recv_testVoid];
-    responseBlock();
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testString: (NSString *) thing
-{
-[outProtocol writeMessageBeginWithName: @"testString" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testString_args"];
-if (thing != nil){
-  [outProtocol writeFieldBeginWithName: @"thing" type: TType_STRING fieldID: 1];
-  [outProtocol writeString: thing];
-  [outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (NSString *) recv_testString
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestString_result * result = [[[ThriftTestTestString_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testString failed: unknown result"];
-}
-
-- (void) testString: (NSString *) thing response: (void (^)(NSString *)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testString : thing];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testString]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testByte: (uint8_t) thing
-{
-[outProtocol writeMessageBeginWithName: @"testByte" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testByte_args"];
-[outProtocol writeFieldBeginWithName: @"thing" type: TType_BYTE fieldID: 1];
-[outProtocol writeByte: thing];
-[outProtocol writeFieldEnd];
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (uint8_t) recv_testByte
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestByte_result * result = [[[ThriftTestTestByte_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testByte failed: unknown result"];
-}
-
-- (void) testByte: (uint8_t) thing response: (void (^)(uint8_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testByte : thing];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testByte]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testI32: (int32_t) thing
-{
-[outProtocol writeMessageBeginWithName: @"testI32" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testI32_args"];
-[outProtocol writeFieldBeginWithName: @"thing" type: TType_I32 fieldID: 1];
-[outProtocol writeI32: thing];
-[outProtocol writeFieldEnd];
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int32_t) recv_testI32
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestI32_result * result = [[[ThriftTestTestI32_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testI32 failed: unknown result"];
-}
-
-- (void) testI32: (int32_t) thing response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testI32 : thing];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testI32]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testI64: (int64_t) thing
-{
-[outProtocol writeMessageBeginWithName: @"testI64" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testI64_args"];
-[outProtocol writeFieldBeginWithName: @"thing" type: TType_I64 fieldID: 1];
-[outProtocol writeI64: thing];
-[outProtocol writeFieldEnd];
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int64_t) recv_testI64
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestI64_result * result = [[[ThriftTestTestI64_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testI64 failed: unknown result"];
-}
-
-- (void) testI64: (int64_t) thing response: (void (^)(int64_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testI64 : thing];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testI64]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testDouble: (double) thing
-{
-[outProtocol writeMessageBeginWithName: @"testDouble" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testDouble_args"];
-[outProtocol writeFieldBeginWithName: @"thing" type: TType_DOUBLE fieldID: 1];
-[outProtocol writeDouble: thing];
-[outProtocol writeFieldEnd];
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (double) recv_testDouble
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestDouble_result * result = [[[ThriftTestTestDouble_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testDouble failed: unknown result"];
-}
-
-- (void) testDouble: (double) thing response: (void (^)(double)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testDouble : thing];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testDouble]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testBinary: (NSData *) thing
-{
-[outProtocol writeMessageBeginWithName: @"testBinary" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testBinary_args"];
-if (thing != nil){
-  [outProtocol writeFieldBeginWithName: @"thing" type: TType_STRING fieldID: 1];
-  [outProtocol writeBinary: thing];
-  [outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (NSData *) recv_testBinary
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestBinary_result * result = [[[ThriftTestTestBinary_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testBinary failed: unknown result"];
-}
-
-- (void) testBinary: (NSData *) thing response: (void (^)(NSData *)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testBinary : thing];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testBinary]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testStruct: (ThriftTestXtruct *) thing
-{
-[outProtocol writeMessageBeginWithName: @"testStruct" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testStruct_args"];
-if (thing != nil){
-  [outProtocol writeFieldBeginWithName: @"thing" type: TType_STRUCT fieldID: 1];
-  [thing write: outProtocol];
-  [outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (ThriftTestXtruct *) recv_testStruct
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestStruct_result * result = [[[ThriftTestTestStruct_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testStruct failed: unknown result"];
-}
-
-- (void) testStruct: (ThriftTestXtruct *) thing response: (void (^)(ThriftTestXtruct *)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testStruct : thing];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testStruct]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testNest: (ThriftTestXtruct2 *) thing
-{
-[outProtocol writeMessageBeginWithName: @"testNest" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testNest_args"];
-if (thing != nil){
-  [outProtocol writeFieldBeginWithName: @"thing" type: TType_STRUCT fieldID: 1];
-  [thing write: outProtocol];
-  [outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (ThriftTestXtruct2 *) recv_testNest
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestNest_result * result = [[[ThriftTestTestNest_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testNest failed: unknown result"];
-}
-
-- (void) testNest: (ThriftTestXtruct2 *) thing response: (void (^)(ThriftTestXtruct2 *)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testNest : thing];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testNest]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testMap: (NSMutableDictionary *) thing
-{
-[outProtocol writeMessageBeginWithName: @"testMap" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testMap_args"];
-if (thing != nil){
-  [outProtocol writeFieldBeginWithName: @"thing" type: TType_MAP fieldID: 1];
-  {
-    [outProtocol writeMapBeginWithKeyType: TType_I32 valueType: TType_I32 size: [thing count]];
-    NSEnumerator * _iter262 = [thing keyEnumerator];
-    id key263;
-    while ((key263 = [_iter262 nextObject]))
-    {
-      [outProtocol writeI32: [key263 longValue]];
-      [outProtocol writeI32: [[thing objectForKey: key263] longValue]];
-    }
-    [outProtocol writeMapEnd];
-  }
-  [outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (NSMutableDictionary *) recv_testMap
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestMap_result * result = [[[ThriftTestTestMap_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testMap failed: unknown result"];
-}
-
-- (void) testMap: (NSMutableDictionary *) thing response: (void (^)(NSMutableDictionary *)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testMap : thing];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testMap]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testStringMap: (NSMutableDictionary *) thing
-{
-[outProtocol writeMessageBeginWithName: @"testStringMap" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testStringMap_args"];
-if (thing != nil){
-  [outProtocol writeFieldBeginWithName: @"thing" type: TType_MAP fieldID: 1];
-  {
-    [outProtocol writeMapBeginWithKeyType: TType_STRING valueType: TType_STRING size: [thing count]];
-    NSEnumerator * _iter264 = [thing keyEnumerator];
-    id key265;
-    while ((key265 = [_iter264 nextObject]))
-    {
-      [outProtocol writeString: key265];
-      [outProtocol writeString: [thing objectForKey: key265]];
-    }
-    [outProtocol writeMapEnd];
-  }
-  [outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (NSMutableDictionary *) recv_testStringMap
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestStringMap_result * result = [[[ThriftTestTestStringMap_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testStringMap failed: unknown result"];
-}
-
-- (void) testStringMap: (NSMutableDictionary *) thing response: (void (^)(NSMutableDictionary *)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testStringMap : thing];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testStringMap]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testSet: (NSMutableSet *) thing
-{
-[outProtocol writeMessageBeginWithName: @"testSet" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testSet_args"];
-if (thing != nil){
-  [outProtocol writeFieldBeginWithName: @"thing" type: TType_SET fieldID: 1];
-  {
-    [outProtocol writeSetBeginWithElementType: TType_I32 size: [thing count]];
-    NSEnumerator * _iter266 = [thing objectEnumerator];
-    id obj267;
-    while ((obj267 = [_iter266 nextObject]))
-    {
-      [outProtocol writeI32: [obj267 longValue]];
-    }
-    [outProtocol writeSetEnd];
-  }
-  [outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (NSMutableSet *) recv_testSet
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestSet_result * result = [[[ThriftTestTestSet_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testSet failed: unknown result"];
-}
-
-- (void) testSet: (NSMutableSet *) thing response: (void (^)(NSMutableSet *)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testSet : thing];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testSet]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testList: (NSMutableArray *) thing
-{
-[outProtocol writeMessageBeginWithName: @"testList" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testList_args"];
-if (thing != nil){
-  [outProtocol writeFieldBeginWithName: @"thing" type: TType_LIST fieldID: 1];
-  {
-    [outProtocol writeListBeginWithElementType: TType_I32 size: [thing count]];
-    int idx269;
-    for (idx269 = 0; idx269 < [thing count]; idx269++)
-    {
-      [outProtocol writeI32: [[thing objectAtIndex: idx269] longValue]];
-    }
-    [outProtocol writeListEnd];
-  }
-  [outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (NSMutableArray *) recv_testList
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestList_result * result = [[[ThriftTestTestList_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testList failed: unknown result"];
-}
-
-- (void) testList: (NSMutableArray *) thing response: (void (^)(NSMutableArray *)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testList : thing];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testList]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testEnum: (int) thing
-{
-[outProtocol writeMessageBeginWithName: @"testEnum" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testEnum_args"];
-[outProtocol writeFieldBeginWithName: @"thing" type: TType_I32 fieldID: 1];
-[outProtocol writeI32: thing];
-[outProtocol writeFieldEnd];
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int) recv_testEnum
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestEnum_result * result = [[[ThriftTestTestEnum_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testEnum failed: unknown result"];
-}
-
-- (void) testEnum: (int) thing response: (void (^)(int)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testEnum : thing];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testEnum]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testTypedef: (ThriftTestUserId) thing
-{
-[outProtocol writeMessageBeginWithName: @"testTypedef" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testTypedef_args"];
-[outProtocol writeFieldBeginWithName: @"thing" type: TType_I64 fieldID: 1];
-[outProtocol writeI64: thing];
-[outProtocol writeFieldEnd];
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (ThriftTestUserId) recv_testTypedef
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestTypedef_result * result = [[[ThriftTestTestTypedef_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testTypedef failed: unknown result"];
-}
-
-- (void) testTypedef: (ThriftTestUserId) thing response: (void (^)(ThriftTestUserId)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testTypedef : thing];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testTypedef]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testMapMap: (int32_t) hello
-{
-[outProtocol writeMessageBeginWithName: @"testMapMap" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testMapMap_args"];
-[outProtocol writeFieldBeginWithName: @"hello" type: TType_I32 fieldID: 1];
-[outProtocol writeI32: hello];
-[outProtocol writeFieldEnd];
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (NSMutableDictionary *) recv_testMapMap
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestMapMap_result * result = [[[ThriftTestTestMapMap_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testMapMap failed: unknown result"];
-}
-
-- (void) testMapMap: (int32_t) hello response: (void (^)(NSMutableDictionary *)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testMapMap : hello];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testMapMap]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testInsanity: (ThriftTestInsanity *) argument
-{
-[outProtocol writeMessageBeginWithName: @"testInsanity" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testInsanity_args"];
-if (argument != nil){
-  [outProtocol writeFieldBeginWithName: @"argument" type: TType_STRUCT fieldID: 1];
-  [argument write: outProtocol];
-  [outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (NSMutableDictionary *) recv_testInsanity
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestInsanity_result * result = [[[ThriftTestTestInsanity_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testInsanity failed: unknown result"];
-}
-
-- (void) testInsanity: (ThriftTestInsanity *) argument response: (void (^)(NSMutableDictionary *)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testInsanity : argument];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testInsanity]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testMulti: (uint8_t) arg0 arg1: (int32_t) arg1 arg2: (int64_t) arg2 arg3: (NSMutableDictionary *) arg3 arg4: (int) arg4 arg5: (ThriftTestUserId) arg5
-{
-[outProtocol writeMessageBeginWithName: @"testMulti" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testMulti_args"];
-[outProtocol writeFieldBeginWithName: @"arg0" type: TType_BYTE fieldID: 1];
-[outProtocol writeByte: arg0];
-[outProtocol writeFieldEnd];
-[outProtocol writeFieldBeginWithName: @"arg1" type: TType_I32 fieldID: 2];
-[outProtocol writeI32: arg1];
-[outProtocol writeFieldEnd];
-[outProtocol writeFieldBeginWithName: @"arg2" type: TType_I64 fieldID: 3];
-[outProtocol writeI64: arg2];
-[outProtocol writeFieldEnd];
-if (arg3 != nil){
-  [outProtocol writeFieldBeginWithName: @"arg3" type: TType_MAP fieldID: 4];
-  {
-    [outProtocol writeMapBeginWithKeyType: TType_I16 valueType: TType_STRING size: [arg3 count]];
-    NSEnumerator * _iter270 = [arg3 keyEnumerator];
-    id key271;
-    while ((key271 = [_iter270 nextObject]))
-    {
-      [outProtocol writeI16: [key271 shortValue]];
-      [outProtocol writeString: [arg3 objectForKey: key271]];
-    }
-    [outProtocol writeMapEnd];
-  }
-  [outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldBeginWithName: @"arg4" type: TType_I32 fieldID: 5];
-[outProtocol writeI32: arg4];
-[outProtocol writeFieldEnd];
-[outProtocol writeFieldBeginWithName: @"arg5" type: TType_I64 fieldID: 6];
-[outProtocol writeI64: arg5];
-[outProtocol writeFieldEnd];
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (ThriftTestXtruct *) recv_testMulti
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestMulti_result * result = [[[ThriftTestTestMulti_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testMulti failed: unknown result"];
-}
-
-- (void) testMulti: (uint8_t) arg0 arg1: (int32_t) arg1 arg2: (int64_t) arg2 arg3: (NSMutableDictionary *) arg3 arg4: (int) arg4 arg5: (ThriftTestUserId) arg5 response: (void (^)(ThriftTestXtruct *)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testMulti : arg0 arg1: arg1 arg2: arg2 arg3: arg3 arg4: arg4 arg5: arg5];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testMulti]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testException: (NSString *) arg
-{
-[outProtocol writeMessageBeginWithName: @"testException" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testException_args"];
-if (arg != nil){
-  [outProtocol writeFieldBeginWithName: @"arg" type: TType_STRING fieldID: 1];
-  [outProtocol writeString: arg];
-  [outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (void) recv_testException
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestException_result * result = [[[ThriftTestTestException_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result err1IsSet]) {
-  @throw [result err1];
-}
-return;
-}
-
-- (void) testException: (NSString *) arg response: (dispatch_block_t) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testException : arg];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    [self recv_testException];
-    responseBlock();
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testMultiException: (NSString *) arg0 arg1: (NSString *) arg1
-{
-[outProtocol writeMessageBeginWithName: @"testMultiException" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testMultiException_args"];
-if (arg0 != nil){
-  [outProtocol writeFieldBeginWithName: @"arg0" type: TType_STRING fieldID: 1];
-  [outProtocol writeString: arg0];
-  [outProtocol writeFieldEnd];
-}
-if (arg1 != nil){
-  [outProtocol writeFieldBeginWithName: @"arg1" type: TType_STRING fieldID: 2];
-  [outProtocol writeString: arg1];
-  [outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (ThriftTestXtruct *) recv_testMultiException
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-ThriftTestTestMultiException_result * result = [[[ThriftTestTestMultiException_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-if ([result err1IsSet]) {
-  @throw [result err1];
-}
-if ([result err2IsSet]) {
-  @throw [result err2];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"testMultiException failed: unknown result"];
-}
-
-- (void) testMultiException: (NSString *) arg0 arg1: (NSString *) arg1 response: (void (^)(ThriftTestXtruct *)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testMultiException : arg0 arg1: arg1];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_testMultiException]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-- (void) send_testOneway: (int32_t) secondsToSleep
-{
-[outProtocol writeMessageBeginWithName: @"testOneway" type: TMessageType_ONEWAY sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"testOneway_args"];
-[outProtocol writeFieldBeginWithName: @"secondsToSleep" type: TType_I32 fieldID: 1];
-[outProtocol writeI32: secondsToSleep];
-[outProtocol writeFieldEnd];
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (void) testOneway: (int32_t) secondsToSleep response: (dispatch_block_t) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_testOneway : secondsToSleep];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock();
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
-}
-
-@end
-
 @interface ThriftTestblahBlah_args : NSObject <TBase, NSCoding> {
 }
 
@@ -17629,6 +16660,13 @@ outProtocol = [anOutProtocol retain_stub];
 return self;
 }
 
+- (void) dealloc
+{
+[inProtocol release_stub];
+[outProtocol release_stub];
+[super dealloc_stub];
+}
+
 - (void) send_blahBlah
 {
 [outProtocol writeMessageBeginWithName: @"blahBlah" type: TMessageType_CALL sequenceID: 0];
@@ -17636,12 +16674,16 @@ return self;
 [outProtocol writeFieldStop];
 [outProtocol writeStructEnd];
 [outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
 }
 
 - (void) recv_blahBlah
 {
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
+int msgType = 0;
+[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+if (msgType == TMessageType_EXCEPTION) {
+  TApplicationException * x = [TApplicationException read: inProtocol];
+  [inProtocol readMessageEnd];
   @throw x;
 }
 ThriftTestBlahBlah_result * result = [[[ThriftTestBlahBlah_result alloc] init] autorelease_stub];
@@ -17653,7 +16695,6 @@ return;
 - (void) blahBlah
 {
 [self send_blahBlah];
-[[outProtocol transport] flush];
 [self recv_blahBlah];
 }
 
@@ -17669,12 +16710,16 @@ if (thing != nil){
 [outProtocol writeFieldStop];
 [outProtocol writeStructEnd];
 [outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
 }
 
 - (NSString *) recv_secondtestString
 {
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
+int msgType = 0;
+[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+if (msgType == TMessageType_EXCEPTION) {
+  TApplicationException * x = [TApplicationException read: inProtocol];
+  [inProtocol readMessageEnd];
   @throw x;
 }
 ThriftTestSecondtestString_result * result = [[[ThriftTestSecondtestString_result alloc] init] autorelease_stub];
@@ -17690,7 +16735,6 @@ if ([result successIsSet]) {
 - (NSString *) secondtestString: (NSString *) thing
 {
 [self send_secondtestString : thing];
-[[outProtocol transport] flush];
 return [self recv_secondtestString];
 }
 
@@ -17802,105 +16846,6 @@ ThriftTestSecondtestString_result * result = [[ThriftTestSecondtestString_result
 [mService release_stub];
 [mMethodMap release_stub];
 [super dealloc_stub];
-}
-
-@end
-
-@implementation ThriftTestSecondServiceClientAsync
-
-- (id) initWithProtocolFactory: (id <TProtocolFactory>) factory transport: (id <TAsyncTransport>) transport;
-{
-self = [super init];
-inProtocol = [[factory newProtocolOnTransport:transport] retain_stub];
-outProtocol = inProtocol;
-asyncTransport = transport;
-return self;
-}
-
-- (void) send_blahBlah
-{
-[outProtocol writeMessageBeginWithName: @"blahBlah" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"blahBlah_args"];
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (void) recv_blahBlah
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
-}
-ThriftTestBlahBlah_result * result = [[[ThriftTestBlahBlah_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-return;
-}
-
-- (void) blahBlah: (dispatch_block_t) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-[self send_blahBlah];
-} @catch(TException * texception) {
-failureBlock(texception);
-return;
-}
-[asyncTransport flush:^{
-@try {
-  [self recv_blahBlah];
-  responseBlock();
-} @catch(TException * texception) {
-  failureBlock(texception);
-}
-} failure:failureBlock];
-}
-
-- (void) send_secondtestString: (NSString *) thing
-{
-[outProtocol writeMessageBeginWithName: @"secondtestString" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"secondtestString_args"];
-if (thing != nil){
-[outProtocol writeFieldBeginWithName: @"thing" type: TType_STRING fieldID: 1];
-[outProtocol writeString: thing];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (NSString *) recv_secondtestString
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
-}
-ThriftTestSecondtestString_result * result = [[[ThriftTestSecondtestString_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"secondtestString failed: unknown result"];
-}
-
-- (void) secondtestString: (NSString *) thing response: (void (^)(NSString *)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-[self send_secondtestString : thing];
-} @catch(TException * texception) {
-failureBlock(texception);
-return;
-}
-[asyncTransport flush:^{
-@try {
-  responseBlock([self recv_secondtestString]);
-} @catch(TException * texception) {
-  failureBlock(texception);
-}
-} failure:failureBlock];
 }
 
 @end

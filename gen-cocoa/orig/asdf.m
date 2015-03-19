@@ -14,9 +14,6 @@
 #import "TProcessor.h"
 #import "TObjective-C.h"
 #import "TBase.h"
-#import "TAsyncTransport.h"
-#import "TProtocolFactory.h"
-#import "TBaseClient.h"
 
 
 #import "asdf.h"
@@ -546,6 +543,13 @@
   return self;
 }
 
+- (void) dealloc
+{
+  [inProtocol release_stub];
+  [outProtocol release_stub];
+  [super dealloc_stub];
+}
+
 - (void) send_ping: (asdfAuthenticationEnvelope *) envelope
 {
   [outProtocol writeMessageBeginWithName: @"ping" type: TMessageType_CALL sequenceID: 0];
@@ -558,12 +562,16 @@
   [outProtocol writeFieldStop];
   [outProtocol writeStructEnd];
   [outProtocol writeMessageEnd];
+  [[outProtocol transport] flush];
 }
 
 - (int32_t) recv_ping
 {
-  TApplicationException * x = [self checkIncomingMessageException];
-  if (x != nil)  {
+  int msgType = 0;
+  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+  if (msgType == TMessageType_EXCEPTION) {
+    TApplicationException * x = [TApplicationException read: inProtocol];
+    [inProtocol readMessageEnd];
     @throw x;
   }
   asdfPing_result * result = [[[asdfPing_result alloc] init] autorelease_stub];
@@ -579,7 +587,6 @@
 - (int32_t) ping: (asdfAuthenticationEnvelope *) envelope
 {
   [self send_ping : envelope];
-  [[outProtocol transport] flush];
   return [self recv_ping];
 }
 
@@ -666,66 +673,6 @@
   [mService release_stub];
   [mMethodMap release_stub];
   [super dealloc_stub];
-}
-
-@end
-
-@implementation asdfAuthenticatedServiceClientAsync
-
-- (id) initWithProtocolFactory: (id <TProtocolFactory>) factory transport: (id <TAsyncTransport>) transport;
-{
-self = [super init];
-inProtocol = [[factory newProtocolOnTransport:transport] retain_stub];
-outProtocol = inProtocol;
-asyncTransport = transport;
-return self;
-}
-
-- (void) send_ping: (asdfAuthenticationEnvelope *) envelope
-{
-[outProtocol writeMessageBeginWithName: @"ping" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"ping_args"];
-if (envelope != nil){
-  [outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-  [envelope write: outProtocol];
-  [outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int32_t) recv_ping
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-  @throw x;
-}
-asdfPing_result * result = [[[asdfPing_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"ping failed: unknown result"];
-}
-
-- (void) ping: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-  [self send_ping : envelope];
-} @catch(TException * texception) {
-  failureBlock(texception);
-  return;
-}
-[asyncTransport flush:^{
-  @try {
-    responseBlock([self recv_ping]);
-  } @catch(TException * texception) {
-    failureBlock(texception);
-  }
-} failure:failureBlock];
 }
 
 @end
@@ -1444,6 +1391,13 @@ outProtocol = [anOutProtocol retain_stub];
 return self;
 }
 
+- (void) dealloc
+{
+[inProtocol release_stub];
+[outProtocol release_stub];
+[super dealloc_stub];
+}
+
 - (void) send_ping11: (asdfAuthenticationEnvelope *) envelope
 {
 [outProtocol writeMessageBeginWithName: @"ping11" type: TMessageType_CALL sequenceID: 0];
@@ -1456,12 +1410,16 @@ if (envelope != nil){
 [outProtocol writeFieldStop];
 [outProtocol writeStructEnd];
 [outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
 }
 
 - (int32_t) recv_ping11
 {
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
+int msgType = 0;
+[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+if (msgType == TMessageType_EXCEPTION) {
+  TApplicationException * x = [TApplicationException read: inProtocol];
+  [inProtocol readMessageEnd];
   @throw x;
 }
 asdfPing11_result * result = [[[asdfPing11_result alloc] init] autorelease_stub];
@@ -1477,7 +1435,6 @@ if ([result successIsSet]) {
 - (int32_t) ping11: (asdfAuthenticationEnvelope *) envelope
 {
 [self send_ping11 : envelope];
-[[outProtocol transport] flush];
 return [self recv_ping11];
 }
 
@@ -1493,12 +1450,16 @@ if (envelope != nil){
 [outProtocol writeFieldStop];
 [outProtocol writeStructEnd];
 [outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
 }
 
 - (int32_t) recv_ping12
 {
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
+int msgType = 0;
+[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+if (msgType == TMessageType_EXCEPTION) {
+  TApplicationException * x = [TApplicationException read: inProtocol];
+  [inProtocol readMessageEnd];
   @throw x;
 }
 asdfPing12_result * result = [[[asdfPing12_result alloc] init] autorelease_stub];
@@ -1514,7 +1475,6 @@ if ([result successIsSet]) {
 - (int32_t) ping12: (asdfAuthenticationEnvelope *) envelope
 {
 [self send_ping12 : envelope];
-[[outProtocol transport] flush];
 return [self recv_ping12];
 }
 
@@ -1626,113 +1586,6 @@ asdfPing12_result * result = [[asdfPing12_result alloc] init];
 [mService release_stub];
 [mMethodMap release_stub];
 [super dealloc_stub];
-}
-
-@end
-
-@implementation asdfAuthenticatedService1ClientAsync
-
-- (id) initWithProtocolFactory: (id <TProtocolFactory>) factory transport: (id <TAsyncTransport>) transport;
-{
-self = [super init];
-inProtocol = [[factory newProtocolOnTransport:transport] retain_stub];
-outProtocol = inProtocol;
-asyncTransport = transport;
-return self;
-}
-
-- (void) send_ping11: (asdfAuthenticationEnvelope *) envelope
-{
-[outProtocol writeMessageBeginWithName: @"ping11" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"ping11_args"];
-if (envelope != nil){
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int32_t) recv_ping11
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
-}
-asdfPing11_result * result = [[[asdfPing11_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"ping11 failed: unknown result"];
-}
-
-- (void) ping11: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-[self send_ping11 : envelope];
-} @catch(TException * texception) {
-failureBlock(texception);
-return;
-}
-[asyncTransport flush:^{
-@try {
-  responseBlock([self recv_ping11]);
-} @catch(TException * texception) {
-  failureBlock(texception);
-}
-} failure:failureBlock];
-}
-
-- (void) send_ping12: (asdfAuthenticationEnvelope *) envelope
-{
-[outProtocol writeMessageBeginWithName: @"ping12" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"ping12_args"];
-if (envelope != nil){
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int32_t) recv_ping12
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
-}
-asdfPing12_result * result = [[[asdfPing12_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"ping12 failed: unknown result"];
-}
-
-- (void) ping12: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-[self send_ping12 : envelope];
-} @catch(TException * texception) {
-failureBlock(texception);
-return;
-}
-[asyncTransport flush:^{
-@try {
-  responseBlock([self recv_ping12]);
-} @catch(TException * texception) {
-  failureBlock(texception);
-}
-} failure:failureBlock];
 }
 
 @end
@@ -2451,6 +2304,13 @@ outProtocol = [anOutProtocol retain_stub];
 return self;
 }
 
+- (void) dealloc
+{
+[inProtocol release_stub];
+[outProtocol release_stub];
+[super dealloc_stub];
+}
+
 - (void) send_ping21: (asdfAuthenticationEnvelope *) envelope
 {
 [outProtocol writeMessageBeginWithName: @"ping21" type: TMessageType_CALL sequenceID: 0];
@@ -2463,13 +2323,17 @@ if (envelope != nil){
 [outProtocol writeFieldStop];
 [outProtocol writeStructEnd];
 [outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
 }
 
 - (int32_t) recv_ping21
 {
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
+int msgType = 0;
+[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+if (msgType == TMessageType_EXCEPTION) {
+  TApplicationException * x = [TApplicationException read: inProtocol];
+  [inProtocol readMessageEnd];
+  @throw x;
 }
 asdfPing21_result * result = [[[asdfPing21_result alloc] init] autorelease_stub];
 [result read: inProtocol];
@@ -2484,7 +2348,6 @@ if ([result successIsSet]) {
 - (int32_t) ping21: (asdfAuthenticationEnvelope *) envelope
 {
 [self send_ping21 : envelope];
-[[outProtocol transport] flush];
 return [self recv_ping21];
 }
 
@@ -2500,13 +2363,17 @@ if (envelope != nil){
 [outProtocol writeFieldStop];
 [outProtocol writeStructEnd];
 [outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
 }
 
 - (int32_t) recv_ping22
 {
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
+int msgType = 0;
+[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+if (msgType == TMessageType_EXCEPTION) {
+  TApplicationException * x = [TApplicationException read: inProtocol];
+  [inProtocol readMessageEnd];
+  @throw x;
 }
 asdfPing22_result * result = [[[asdfPing22_result alloc] init] autorelease_stub];
 [result read: inProtocol];
@@ -2521,7 +2388,6 @@ if ([result successIsSet]) {
 - (int32_t) ping22: (asdfAuthenticationEnvelope *) envelope
 {
 [self send_ping22 : envelope];
-[[outProtocol transport] flush];
 return [self recv_ping22];
 }
 
@@ -2633,113 +2499,6 @@ asdfPing22_result * result = [[asdfPing22_result alloc] init];
 [mService release_stub];
 [mMethodMap release_stub];
 [super dealloc_stub];
-}
-
-@end
-
-@implementation asdfAuthenticatedService2ClientAsync
-
-- (id) initWithProtocolFactory: (id <TProtocolFactory>) factory transport: (id <TAsyncTransport>) transport;
-{
-self = [super init];
-inProtocol = [[factory newProtocolOnTransport:transport] retain_stub];
-outProtocol = inProtocol;
-asyncTransport = transport;
-return self;
-}
-
-- (void) send_ping21: (asdfAuthenticationEnvelope *) envelope
-{
-[outProtocol writeMessageBeginWithName: @"ping21" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"ping21_args"];
-if (envelope != nil){
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int32_t) recv_ping21
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
-}
-asdfPing21_result * result = [[[asdfPing21_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"ping21 failed: unknown result"];
-}
-
-- (void) ping21: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-[self send_ping21 : envelope];
-} @catch(TException * texception) {
-failureBlock(texception);
-return;
-}
-[asyncTransport flush:^{
-@try {
-responseBlock([self recv_ping21]);
-} @catch(TException * texception) {
-failureBlock(texception);
-}
-} failure:failureBlock];
-}
-
-- (void) send_ping22: (asdfAuthenticationEnvelope *) envelope
-{
-[outProtocol writeMessageBeginWithName: @"ping22" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"ping22_args"];
-if (envelope != nil){
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int32_t) recv_ping22
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
-}
-asdfPing22_result * result = [[[asdfPing22_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"ping22 failed: unknown result"];
-}
-
-- (void) ping22: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-[self send_ping22 : envelope];
-} @catch(TException * texception) {
-failureBlock(texception);
-return;
-}
-[asyncTransport flush:^{
-@try {
-responseBlock([self recv_ping22]);
-} @catch(TException * texception) {
-failureBlock(texception);
-}
-} failure:failureBlock];
 }
 
 @end
@@ -3458,6 +3217,13 @@ outProtocol = [anOutProtocol retain_stub];
 return self;
 }
 
+- (void) dealloc
+{
+[inProtocol release_stub];
+[outProtocol release_stub];
+[super dealloc_stub];
+}
+
 - (void) send_ping31: (asdfAuthenticationEnvelope *) envelope
 {
 [outProtocol writeMessageBeginWithName: @"ping31" type: TMessageType_CALL sequenceID: 0];
@@ -3470,13 +3236,17 @@ if (envelope != nil){
 [outProtocol writeFieldStop];
 [outProtocol writeStructEnd];
 [outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
 }
 
 - (int32_t) recv_ping31
 {
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
+int msgType = 0;
+[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+if (msgType == TMessageType_EXCEPTION) {
+  TApplicationException * x = [TApplicationException read: inProtocol];
+  [inProtocol readMessageEnd];
+  @throw x;
 }
 asdfPing31_result * result = [[[asdfPing31_result alloc] init] autorelease_stub];
 [result read: inProtocol];
@@ -3491,7 +3261,6 @@ if ([result successIsSet]) {
 - (int32_t) ping31: (asdfAuthenticationEnvelope *) envelope
 {
 [self send_ping31 : envelope];
-[[outProtocol transport] flush];
 return [self recv_ping31];
 }
 
@@ -3507,13 +3276,17 @@ if (envelope != nil){
 [outProtocol writeFieldStop];
 [outProtocol writeStructEnd];
 [outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
 }
 
 - (int32_t) recv_ping32
 {
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
+int msgType = 0;
+[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+if (msgType == TMessageType_EXCEPTION) {
+  TApplicationException * x = [TApplicationException read: inProtocol];
+  [inProtocol readMessageEnd];
+  @throw x;
 }
 asdfPing32_result * result = [[[asdfPing32_result alloc] init] autorelease_stub];
 [result read: inProtocol];
@@ -3528,7 +3301,6 @@ if ([result successIsSet]) {
 - (int32_t) ping32: (asdfAuthenticationEnvelope *) envelope
 {
 [self send_ping32 : envelope];
-[[outProtocol transport] flush];
 return [self recv_ping32];
 }
 
@@ -3640,113 +3412,6 @@ asdfPing32_result * result = [[asdfPing32_result alloc] init];
 [mService release_stub];
 [mMethodMap release_stub];
 [super dealloc_stub];
-}
-
-@end
-
-@implementation asdfAuthenticatedService3ClientAsync
-
-- (id) initWithProtocolFactory: (id <TProtocolFactory>) factory transport: (id <TAsyncTransport>) transport;
-{
-self = [super init];
-inProtocol = [[factory newProtocolOnTransport:transport] retain_stub];
-outProtocol = inProtocol;
-asyncTransport = transport;
-return self;
-}
-
-- (void) send_ping31: (asdfAuthenticationEnvelope *) envelope
-{
-[outProtocol writeMessageBeginWithName: @"ping31" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"ping31_args"];
-if (envelope != nil){
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int32_t) recv_ping31
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
-}
-asdfPing31_result * result = [[[asdfPing31_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"ping31 failed: unknown result"];
-}
-
-- (void) ping31: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-[self send_ping31 : envelope];
-} @catch(TException * texception) {
-failureBlock(texception);
-return;
-}
-[asyncTransport flush:^{
-@try {
-responseBlock([self recv_ping31]);
-} @catch(TException * texception) {
-failureBlock(texception);
-}
-} failure:failureBlock];
-}
-
-- (void) send_ping32: (asdfAuthenticationEnvelope *) envelope
-{
-[outProtocol writeMessageBeginWithName: @"ping32" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"ping32_args"];
-if (envelope != nil){
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int32_t) recv_ping32
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
-}
-asdfPing32_result * result = [[[asdfPing32_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"ping32 failed: unknown result"];
-}
-
-- (void) ping32: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-[self send_ping32 : envelope];
-} @catch(TException * texception) {
-failureBlock(texception);
-return;
-}
-[asyncTransport flush:^{
-@try {
-responseBlock([self recv_ping32]);
-} @catch(TException * texception) {
-failureBlock(texception);
-}
-} failure:failureBlock];
 }
 
 @end
@@ -4465,6 +4130,13 @@ outProtocol = [anOutProtocol retain_stub];
 return self;
 }
 
+- (void) dealloc
+{
+[inProtocol release_stub];
+[outProtocol release_stub];
+[super dealloc_stub];
+}
+
 - (void) send_ping41: (asdfAuthenticationEnvelope *) envelope
 {
 [outProtocol writeMessageBeginWithName: @"ping41" type: TMessageType_CALL sequenceID: 0];
@@ -4477,13 +4149,17 @@ if (envelope != nil){
 [outProtocol writeFieldStop];
 [outProtocol writeStructEnd];
 [outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
 }
 
 - (int32_t) recv_ping41
 {
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
+int msgType = 0;
+[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+if (msgType == TMessageType_EXCEPTION) {
+  TApplicationException * x = [TApplicationException read: inProtocol];
+  [inProtocol readMessageEnd];
+  @throw x;
 }
 asdfPing41_result * result = [[[asdfPing41_result alloc] init] autorelease_stub];
 [result read: inProtocol];
@@ -4498,7 +4174,6 @@ if ([result successIsSet]) {
 - (int32_t) ping41: (asdfAuthenticationEnvelope *) envelope
 {
 [self send_ping41 : envelope];
-[[outProtocol transport] flush];
 return [self recv_ping41];
 }
 
@@ -4514,13 +4189,17 @@ if (envelope != nil){
 [outProtocol writeFieldStop];
 [outProtocol writeStructEnd];
 [outProtocol writeMessageEnd];
+[[outProtocol transport] flush];
 }
 
 - (int32_t) recv_ping42
 {
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
+int msgType = 0;
+[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+if (msgType == TMessageType_EXCEPTION) {
+  TApplicationException * x = [TApplicationException read: inProtocol];
+  [inProtocol readMessageEnd];
+  @throw x;
 }
 asdfPing42_result * result = [[[asdfPing42_result alloc] init] autorelease_stub];
 [result read: inProtocol];
@@ -4535,7 +4214,6 @@ if ([result successIsSet]) {
 - (int32_t) ping42: (asdfAuthenticationEnvelope *) envelope
 {
 [self send_ping42 : envelope];
-[[outProtocol transport] flush];
 return [self recv_ping42];
 }
 
@@ -4647,113 +4325,6 @@ asdfPing42_result * result = [[asdfPing42_result alloc] init];
 [mService release_stub];
 [mMethodMap release_stub];
 [super dealloc_stub];
-}
-
-@end
-
-@implementation asdfAuthenticatedService4ClientAsync
-
-- (id) initWithProtocolFactory: (id <TProtocolFactory>) factory transport: (id <TAsyncTransport>) transport;
-{
-self = [super init];
-inProtocol = [[factory newProtocolOnTransport:transport] retain_stub];
-outProtocol = inProtocol;
-asyncTransport = transport;
-return self;
-}
-
-- (void) send_ping41: (asdfAuthenticationEnvelope *) envelope
-{
-[outProtocol writeMessageBeginWithName: @"ping41" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"ping41_args"];
-if (envelope != nil){
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int32_t) recv_ping41
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
-}
-asdfPing41_result * result = [[[asdfPing41_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"ping41 failed: unknown result"];
-}
-
-- (void) ping41: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-[self send_ping41 : envelope];
-} @catch(TException * texception) {
-failureBlock(texception);
-return;
-}
-[asyncTransport flush:^{
-@try {
-responseBlock([self recv_ping41]);
-} @catch(TException * texception) {
-failureBlock(texception);
-}
-} failure:failureBlock];
-}
-
-- (void) send_ping42: (asdfAuthenticationEnvelope *) envelope
-{
-[outProtocol writeMessageBeginWithName: @"ping42" type: TMessageType_CALL sequenceID: 0];
-[outProtocol writeStructBeginWithName: @"ping42_args"];
-if (envelope != nil){
-[outProtocol writeFieldBeginWithName: @"envelope" type: TType_STRUCT fieldID: 1];
-[envelope write: outProtocol];
-[outProtocol writeFieldEnd];
-}
-[outProtocol writeFieldStop];
-[outProtocol writeStructEnd];
-[outProtocol writeMessageEnd];
-}
-
-- (int32_t) recv_ping42
-{
-TApplicationException * x = [self checkIncomingMessageException];
-if (x != nil){
-@throw x;
-}
-asdfPing42_result * result = [[[asdfPing42_result alloc] init] autorelease_stub];
-[result read: inProtocol];
-[inProtocol readMessageEnd];
-if ([result successIsSet]) {
-  return [result success];
-}
-@throw [TApplicationException exceptionWithType: TApplicationException_MISSING_RESULT
-                                         reason: @"ping42 failed: unknown result"];
-}
-
-- (void) ping42: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock
-{
-@try {
-[self send_ping42 : envelope];
-} @catch(TException * texception) {
-failureBlock(texception);
-return;
-}
-[asyncTransport flush:^{
-@try {
-responseBlock([self recv_ping42]);
-} @catch(TException * texception) {
-failureBlock(texception);
-}
-} failure:failureBlock];
 }
 
 @end

@@ -1,0 +1,59 @@
+diff --git a/gen-cocoa/ThriftTest.h b/gen-cocoa/no_clients/ThriftTest.h
+index 0c8c139..93571dc 100644
+--- a/gen-cocoa/ThriftTest.h
++++ b/gen-cocoa/no_clients/ThriftTest.h
+@@ -1100,36 +1100,6 @@ typedef NSMutableDictionary * ThriftTestMapType;
+ - (id<ThriftTestThriftTest>) service;
+ @end
+ 
+-@protocol ThriftTestThriftTestAsync <NSObject>
+-- (void) testVoid: (dispatch_block_t) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testString: (NSString *) thing response: (void (^)(NSString *)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testByte: (uint8_t) thing response: (void (^)(uint8_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testI32: (int32_t) thing response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testI64: (int64_t) thing response: (void (^)(int64_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testDouble: (double) thing response: (void (^)(double)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testBinary: (NSData *) thing response: (void (^)(NSData *)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testStruct: (ThriftTestXtruct *) thing response: (void (^)(ThriftTestXtruct *)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testNest: (ThriftTestXtruct2 *) thing response: (void (^)(ThriftTestXtruct2 *)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testMap: (NSMutableDictionary *) thing response: (void (^)(NSMutableDictionary *)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testStringMap: (NSMutableDictionary *) thing response: (void (^)(NSMutableDictionary *)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testSet: (NSMutableSet *) thing response: (void (^)(NSMutableSet *)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testList: (NSMutableArray *) thing response: (void (^)(NSMutableArray *)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testEnum: (int) thing response: (void (^)(int)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testTypedef: (ThriftTestUserId) thing response: (void (^)(ThriftTestUserId)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testMapMap: (int32_t) hello response: (void (^)(NSMutableDictionary *)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testInsanity: (ThriftTestInsanity *) argument response: (void (^)(NSMutableDictionary *)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testMulti: (uint8_t) arg0 arg1: (int32_t) arg1 arg2: (int64_t) arg2 arg3: (NSMutableDictionary *) arg3 arg4: (int) arg4 arg5: (ThriftTestUserId) arg5 response: (void (^)(ThriftTestXtruct *)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testException: (NSString *) arg response: (dispatch_block_t) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testMultiException: (NSString *) arg0 arg1: (NSString *) arg1 response: (void (^)(ThriftTestXtruct *)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) testOneway: (int32_t) secondsToSleep response: (dispatch_block_t) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-@end
+-
+-@interface ThriftTestThriftTestClientAsync : TBaseClient <ThriftTestThriftTestAsync> {
+-id <TAsyncTransport> asyncTransport;
+-}
+-- (id) initWithProtocolFactory: (id <TProtocolFactory>) factory transport: (id <TAsyncTransport>) transport;
+-@end
+-
+ @protocol ThriftTestSecondService <NSObject>
+ - (void) blahBlah;  // throws TException
+ - (NSString *) secondtestString: (NSString *) thing;  // throws TException
+@@ -1147,17 +1117,6 @@ NSDictionary * mMethodMap;
+ - (id<ThriftTestSecondService>) service;
+ @end
+ 
+-@protocol ThriftTestSecondServiceAsync <NSObject>
+-- (void) blahBlah: (dispatch_block_t) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-- (void) secondtestString: (NSString *) thing response: (void (^)(NSString *)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
+-@end
+-
+-@interface ThriftTestSecondServiceClientAsync : TBaseClient <ThriftTestSecondServiceAsync> {
+-id <TAsyncTransport> asyncTransport;
+-}
+-- (id) initWithProtocolFactory: (id <TProtocolFactory>) factory transport: (id <TAsyncTransport>) transport;
+-@end
+-
+ @interface ThriftTestThriftTestConstants : NSObject {
+ }
+ + (int) myNumberz;

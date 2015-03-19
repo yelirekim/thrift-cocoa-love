@@ -1,0 +1,339 @@
+diff --git a/gen-cocoa/orig/asdf.m b/gen-cocoa/no_clients/asdf.m
+index cd3be91..0f1a2b5 100644
+--- a/gen-cocoa/orig/asdf.m
++++ b/gen-cocoa/no_clients/asdf.m
+@@ -14,6 +14,9 @@
+ #import "TProcessor.h"
+ #import "TObjective-C.h"
+ #import "TBase.h"
++#import "TAsyncTransport.h"
++#import "TProtocolFactory.h"
++#import "TBaseClient.h"
+ 
+ 
+ #import "asdf.h"
+@@ -543,13 +546,6 @@
+   return self;
+ }
+ 
+-- (void) dealloc
+-{
+-  [inProtocol release_stub];
+-  [outProtocol release_stub];
+-  [super dealloc_stub];
+-}
+-
+ - (void) send_ping: (asdfAuthenticationEnvelope *) envelope
+ {
+   [outProtocol writeMessageBeginWithName: @"ping" type: TMessageType_CALL sequenceID: 0];
+@@ -562,16 +558,12 @@
+   [outProtocol writeFieldStop];
+   [outProtocol writeStructEnd];
+   [outProtocol writeMessageEnd];
+-  [[outProtocol transport] flush];
+ }
+ 
+ - (int32_t) recv_ping
+ {
+-  int msgType = 0;
+-  [inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+-  if (msgType == TMessageType_EXCEPTION) {
+-    TApplicationException * x = [TApplicationException read: inProtocol];
+-    [inProtocol readMessageEnd];
++  TApplicationException * x = [self checkIncomingMessageException];
++  if (x != nil)  {
+     @throw x;
+   }
+   asdfPing_result * result = [[[asdfPing_result alloc] init] autorelease_stub];
+@@ -587,6 +579,7 @@
+ - (int32_t) ping: (asdfAuthenticationEnvelope *) envelope
+ {
+   [self send_ping : envelope];
++  [[outProtocol transport] flush];
+   return [self recv_ping];
+ }
+ 
+@@ -1391,13 +1384,6 @@ outProtocol = [anOutProtocol retain_stub];
+ return self;
+ }
+ 
+-- (void) dealloc
+-{
+-[inProtocol release_stub];
+-[outProtocol release_stub];
+-[super dealloc_stub];
+-}
+-
+ - (void) send_ping11: (asdfAuthenticationEnvelope *) envelope
+ {
+ [outProtocol writeMessageBeginWithName: @"ping11" type: TMessageType_CALL sequenceID: 0];
+@@ -1410,16 +1396,12 @@ if (envelope != nil){
+ [outProtocol writeFieldStop];
+ [outProtocol writeStructEnd];
+ [outProtocol writeMessageEnd];
+-[[outProtocol transport] flush];
+ }
+ 
+ - (int32_t) recv_ping11
+ {
+-int msgType = 0;
+-[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+-if (msgType == TMessageType_EXCEPTION) {
+-  TApplicationException * x = [TApplicationException read: inProtocol];
+-  [inProtocol readMessageEnd];
++TApplicationException * x = [self checkIncomingMessageException];
++if (x != nil){
+   @throw x;
+ }
+ asdfPing11_result * result = [[[asdfPing11_result alloc] init] autorelease_stub];
+@@ -1435,6 +1417,7 @@ if ([result successIsSet]) {
+ - (int32_t) ping11: (asdfAuthenticationEnvelope *) envelope
+ {
+ [self send_ping11 : envelope];
++[[outProtocol transport] flush];
+ return [self recv_ping11];
+ }
+ 
+@@ -1450,16 +1433,12 @@ if (envelope != nil){
+ [outProtocol writeFieldStop];
+ [outProtocol writeStructEnd];
+ [outProtocol writeMessageEnd];
+-[[outProtocol transport] flush];
+ }
+ 
+ - (int32_t) recv_ping12
+ {
+-int msgType = 0;
+-[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+-if (msgType == TMessageType_EXCEPTION) {
+-  TApplicationException * x = [TApplicationException read: inProtocol];
+-  [inProtocol readMessageEnd];
++TApplicationException * x = [self checkIncomingMessageException];
++if (x != nil){
+   @throw x;
+ }
+ asdfPing12_result * result = [[[asdfPing12_result alloc] init] autorelease_stub];
+@@ -1475,6 +1454,7 @@ if ([result successIsSet]) {
+ - (int32_t) ping12: (asdfAuthenticationEnvelope *) envelope
+ {
+ [self send_ping12 : envelope];
++[[outProtocol transport] flush];
+ return [self recv_ping12];
+ }
+ 
+@@ -2304,13 +2284,6 @@ outProtocol = [anOutProtocol retain_stub];
+ return self;
+ }
+ 
+-- (void) dealloc
+-{
+-[inProtocol release_stub];
+-[outProtocol release_stub];
+-[super dealloc_stub];
+-}
+-
+ - (void) send_ping21: (asdfAuthenticationEnvelope *) envelope
+ {
+ [outProtocol writeMessageBeginWithName: @"ping21" type: TMessageType_CALL sequenceID: 0];
+@@ -2323,17 +2296,13 @@ if (envelope != nil){
+ [outProtocol writeFieldStop];
+ [outProtocol writeStructEnd];
+ [outProtocol writeMessageEnd];
+-[[outProtocol transport] flush];
+ }
+ 
+ - (int32_t) recv_ping21
+ {
+-int msgType = 0;
+-[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+-if (msgType == TMessageType_EXCEPTION) {
+-  TApplicationException * x = [TApplicationException read: inProtocol];
+-  [inProtocol readMessageEnd];
+-  @throw x;
++TApplicationException * x = [self checkIncomingMessageException];
++if (x != nil){
++@throw x;
+ }
+ asdfPing21_result * result = [[[asdfPing21_result alloc] init] autorelease_stub];
+ [result read: inProtocol];
+@@ -2348,6 +2317,7 @@ if ([result successIsSet]) {
+ - (int32_t) ping21: (asdfAuthenticationEnvelope *) envelope
+ {
+ [self send_ping21 : envelope];
++[[outProtocol transport] flush];
+ return [self recv_ping21];
+ }
+ 
+@@ -2363,17 +2333,13 @@ if (envelope != nil){
+ [outProtocol writeFieldStop];
+ [outProtocol writeStructEnd];
+ [outProtocol writeMessageEnd];
+-[[outProtocol transport] flush];
+ }
+ 
+ - (int32_t) recv_ping22
+ {
+-int msgType = 0;
+-[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+-if (msgType == TMessageType_EXCEPTION) {
+-  TApplicationException * x = [TApplicationException read: inProtocol];
+-  [inProtocol readMessageEnd];
+-  @throw x;
++TApplicationException * x = [self checkIncomingMessageException];
++if (x != nil){
++@throw x;
+ }
+ asdfPing22_result * result = [[[asdfPing22_result alloc] init] autorelease_stub];
+ [result read: inProtocol];
+@@ -2388,6 +2354,7 @@ if ([result successIsSet]) {
+ - (int32_t) ping22: (asdfAuthenticationEnvelope *) envelope
+ {
+ [self send_ping22 : envelope];
++[[outProtocol transport] flush];
+ return [self recv_ping22];
+ }
+ 
+@@ -3217,13 +3184,6 @@ outProtocol = [anOutProtocol retain_stub];
+ return self;
+ }
+ 
+-- (void) dealloc
+-{
+-[inProtocol release_stub];
+-[outProtocol release_stub];
+-[super dealloc_stub];
+-}
+-
+ - (void) send_ping31: (asdfAuthenticationEnvelope *) envelope
+ {
+ [outProtocol writeMessageBeginWithName: @"ping31" type: TMessageType_CALL sequenceID: 0];
+@@ -3236,17 +3196,13 @@ if (envelope != nil){
+ [outProtocol writeFieldStop];
+ [outProtocol writeStructEnd];
+ [outProtocol writeMessageEnd];
+-[[outProtocol transport] flush];
+ }
+ 
+ - (int32_t) recv_ping31
+ {
+-int msgType = 0;
+-[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+-if (msgType == TMessageType_EXCEPTION) {
+-  TApplicationException * x = [TApplicationException read: inProtocol];
+-  [inProtocol readMessageEnd];
+-  @throw x;
++TApplicationException * x = [self checkIncomingMessageException];
++if (x != nil){
++@throw x;
+ }
+ asdfPing31_result * result = [[[asdfPing31_result alloc] init] autorelease_stub];
+ [result read: inProtocol];
+@@ -3261,6 +3217,7 @@ if ([result successIsSet]) {
+ - (int32_t) ping31: (asdfAuthenticationEnvelope *) envelope
+ {
+ [self send_ping31 : envelope];
++[[outProtocol transport] flush];
+ return [self recv_ping31];
+ }
+ 
+@@ -3276,17 +3233,13 @@ if (envelope != nil){
+ [outProtocol writeFieldStop];
+ [outProtocol writeStructEnd];
+ [outProtocol writeMessageEnd];
+-[[outProtocol transport] flush];
+ }
+ 
+ - (int32_t) recv_ping32
+ {
+-int msgType = 0;
+-[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+-if (msgType == TMessageType_EXCEPTION) {
+-  TApplicationException * x = [TApplicationException read: inProtocol];
+-  [inProtocol readMessageEnd];
+-  @throw x;
++TApplicationException * x = [self checkIncomingMessageException];
++if (x != nil){
++@throw x;
+ }
+ asdfPing32_result * result = [[[asdfPing32_result alloc] init] autorelease_stub];
+ [result read: inProtocol];
+@@ -3301,6 +3254,7 @@ if ([result successIsSet]) {
+ - (int32_t) ping32: (asdfAuthenticationEnvelope *) envelope
+ {
+ [self send_ping32 : envelope];
++[[outProtocol transport] flush];
+ return [self recv_ping32];
+ }
+ 
+@@ -4130,13 +4084,6 @@ outProtocol = [anOutProtocol retain_stub];
+ return self;
+ }
+ 
+-- (void) dealloc
+-{
+-[inProtocol release_stub];
+-[outProtocol release_stub];
+-[super dealloc_stub];
+-}
+-
+ - (void) send_ping41: (asdfAuthenticationEnvelope *) envelope
+ {
+ [outProtocol writeMessageBeginWithName: @"ping41" type: TMessageType_CALL sequenceID: 0];
+@@ -4149,17 +4096,13 @@ if (envelope != nil){
+ [outProtocol writeFieldStop];
+ [outProtocol writeStructEnd];
+ [outProtocol writeMessageEnd];
+-[[outProtocol transport] flush];
+ }
+ 
+ - (int32_t) recv_ping41
+ {
+-int msgType = 0;
+-[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+-if (msgType == TMessageType_EXCEPTION) {
+-  TApplicationException * x = [TApplicationException read: inProtocol];
+-  [inProtocol readMessageEnd];
+-  @throw x;
++TApplicationException * x = [self checkIncomingMessageException];
++if (x != nil){
++@throw x;
+ }
+ asdfPing41_result * result = [[[asdfPing41_result alloc] init] autorelease_stub];
+ [result read: inProtocol];
+@@ -4174,6 +4117,7 @@ if ([result successIsSet]) {
+ - (int32_t) ping41: (asdfAuthenticationEnvelope *) envelope
+ {
+ [self send_ping41 : envelope];
++[[outProtocol transport] flush];
+ return [self recv_ping41];
+ }
+ 
+@@ -4189,17 +4133,13 @@ if (envelope != nil){
+ [outProtocol writeFieldStop];
+ [outProtocol writeStructEnd];
+ [outProtocol writeMessageEnd];
+-[[outProtocol transport] flush];
+ }
+ 
+ - (int32_t) recv_ping42
+ {
+-int msgType = 0;
+-[inProtocol readMessageBeginReturningName: nil type: &msgType sequenceID: NULL];
+-if (msgType == TMessageType_EXCEPTION) {
+-  TApplicationException * x = [TApplicationException read: inProtocol];
+-  [inProtocol readMessageEnd];
+-  @throw x;
++TApplicationException * x = [self checkIncomingMessageException];
++if (x != nil){
++@throw x;
+ }
+ asdfPing42_result * result = [[[asdfPing42_result alloc] init] autorelease_stub];
+ [result read: inProtocol];
+@@ -4214,6 +4154,7 @@ if ([result successIsSet]) {
+ - (int32_t) ping42: (asdfAuthenticationEnvelope *) envelope
+ {
+ [self send_ping42 : envelope];
++[[outProtocol transport] flush];
+ return [self recv_ping42];
+ }
+ 

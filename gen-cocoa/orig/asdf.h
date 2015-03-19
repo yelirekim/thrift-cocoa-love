@@ -14,9 +14,6 @@
 #import "TProcessor.h"
 #import "TObjective-C.h"
 #import "TBase.h"
-#import "TAsyncTransport.h"
-#import "TProtocolFactory.h"
-#import "TBaseClient.h"
 
 
 @interface asdfAuthenticationEnvelope : NSObject <TBase, NSCoding> {
@@ -49,7 +46,11 @@
 - (int32_t) ping: (asdfAuthenticationEnvelope *) envelope;  // throws TException
 @end
 
-@interface asdfAuthenticatedServiceClient : TBaseClient <asdfAuthenticatedService> - (id) initWithProtocol: (id <TProtocol>) protocol;
+@interface asdfAuthenticatedServiceClient : NSObject <asdfAuthenticatedService> {
+  id <TProtocol> inProtocol;
+  id <TProtocol> outProtocol;
+}
+- (id) initWithProtocol: (id <TProtocol>) protocol;
 - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
 @end
 
@@ -61,22 +62,16 @@
 - (id<asdfAuthenticatedService>) service;
 @end
 
-@protocol asdfAuthenticatedServiceAsync <NSObject>
-- (void) ping: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
-@end
-
-@interface asdfAuthenticatedServiceClientAsync : TBaseClient <asdfAuthenticatedServiceAsync> {
-id <TAsyncTransport> asyncTransport;
-}
-- (id) initWithProtocolFactory: (id <TProtocolFactory>) factory transport: (id <TAsyncTransport>) transport;
-@end
-
 @protocol asdfAuthenticatedService1 <NSObject>
 - (int32_t) ping11: (asdfAuthenticationEnvelope *) envelope;  // throws TException
 - (int32_t) ping12: (asdfAuthenticationEnvelope *) envelope;  // throws TException
 @end
 
-@interface asdfAuthenticatedService1Client : TBaseClient <asdfAuthenticatedService1> - (id) initWithProtocol: (id <TProtocol>) protocol;
+@interface asdfAuthenticatedService1Client : NSObject <asdfAuthenticatedService1> {
+id <TProtocol> inProtocol;
+id <TProtocol> outProtocol;
+}
+- (id) initWithProtocol: (id <TProtocol>) protocol;
 - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
 @end
 
@@ -88,23 +83,16 @@ NSDictionary * mMethodMap;
 - (id<asdfAuthenticatedService1>) service;
 @end
 
-@protocol asdfAuthenticatedService1Async <NSObject>
-- (void) ping11: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
-- (void) ping12: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
-@end
-
-@interface asdfAuthenticatedService1ClientAsync : TBaseClient <asdfAuthenticatedService1Async> {
-id <TAsyncTransport> asyncTransport;
-}
-- (id) initWithProtocolFactory: (id <TProtocolFactory>) factory transport: (id <TAsyncTransport>) transport;
-@end
-
 @protocol asdfAuthenticatedService2 <NSObject>
 - (int32_t) ping21: (asdfAuthenticationEnvelope *) envelope;  // throws TException
 - (int32_t) ping22: (asdfAuthenticationEnvelope *) envelope;  // throws TException
 @end
 
-@interface asdfAuthenticatedService2Client : TBaseClient <asdfAuthenticatedService2> - (id) initWithProtocol: (id <TProtocol>) protocol;
+@interface asdfAuthenticatedService2Client : NSObject <asdfAuthenticatedService2> {
+id <TProtocol> inProtocol;
+id <TProtocol> outProtocol;
+}
+- (id) initWithProtocol: (id <TProtocol>) protocol;
 - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
 @end
 
@@ -116,23 +104,16 @@ NSDictionary * mMethodMap;
 - (id<asdfAuthenticatedService2>) service;
 @end
 
-@protocol asdfAuthenticatedService2Async <NSObject>
-- (void) ping21: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
-- (void) ping22: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
-@end
-
-@interface asdfAuthenticatedService2ClientAsync : TBaseClient <asdfAuthenticatedService2Async> {
-id <TAsyncTransport> asyncTransport;
-}
-- (id) initWithProtocolFactory: (id <TProtocolFactory>) factory transport: (id <TAsyncTransport>) transport;
-@end
-
 @protocol asdfAuthenticatedService3 <NSObject>
 - (int32_t) ping31: (asdfAuthenticationEnvelope *) envelope;  // throws TException
 - (int32_t) ping32: (asdfAuthenticationEnvelope *) envelope;  // throws TException
 @end
 
-@interface asdfAuthenticatedService3Client : TBaseClient <asdfAuthenticatedService3> - (id) initWithProtocol: (id <TProtocol>) protocol;
+@interface asdfAuthenticatedService3Client : NSObject <asdfAuthenticatedService3> {
+id <TProtocol> inProtocol;
+id <TProtocol> outProtocol;
+}
+- (id) initWithProtocol: (id <TProtocol>) protocol;
 - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
 @end
 
@@ -144,23 +125,16 @@ NSDictionary * mMethodMap;
 - (id<asdfAuthenticatedService3>) service;
 @end
 
-@protocol asdfAuthenticatedService3Async <NSObject>
-- (void) ping31: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
-- (void) ping32: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
-@end
-
-@interface asdfAuthenticatedService3ClientAsync : TBaseClient <asdfAuthenticatedService3Async> {
-id <TAsyncTransport> asyncTransport;
-}
-- (id) initWithProtocolFactory: (id <TProtocolFactory>) factory transport: (id <TAsyncTransport>) transport;
-@end
-
 @protocol asdfAuthenticatedService4 <NSObject>
 - (int32_t) ping41: (asdfAuthenticationEnvelope *) envelope;  // throws TException
 - (int32_t) ping42: (asdfAuthenticationEnvelope *) envelope;  // throws TException
 @end
 
-@interface asdfAuthenticatedService4Client : TBaseClient <asdfAuthenticatedService4> - (id) initWithProtocol: (id <TProtocol>) protocol;
+@interface asdfAuthenticatedService4Client : NSObject <asdfAuthenticatedService4> {
+id <TProtocol> inProtocol;
+id <TProtocol> outProtocol;
+}
+- (id) initWithProtocol: (id <TProtocol>) protocol;
 - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
 @end
 
@@ -170,17 +144,6 @@ NSDictionary * mMethodMap;
 }
 - (id) initWithAuthenticatedService4: (id <asdfAuthenticatedService4>) service;
 - (id<asdfAuthenticatedService4>) service;
-@end
-
-@protocol asdfAuthenticatedService4Async <NSObject>
-- (void) ping41: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
-- (void) ping42: (asdfAuthenticationEnvelope *) envelope response: (void (^)(int32_t)) responseBlock failure : (TAsyncFailureBlock) failureBlock;
-@end
-
-@interface asdfAuthenticatedService4ClientAsync : TBaseClient <asdfAuthenticatedService4Async> {
-id <TAsyncTransport> asyncTransport;
-}
-- (id) initWithProtocolFactory: (id <TProtocolFactory>) factory transport: (id <TAsyncTransport>) transport;
 @end
 
 @interface asdfasdfConstants : NSObject {

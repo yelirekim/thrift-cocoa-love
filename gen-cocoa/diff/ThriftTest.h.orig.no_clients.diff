@@ -1,0 +1,40 @@
+diff --git a/gen-cocoa/orig/ThriftTest.h b/gen-cocoa/no_clients/ThriftTest.h
+index cd1bb7b..93571dc 100644
+--- a/gen-cocoa/orig/ThriftTest.h
++++ b/gen-cocoa/no_clients/ThriftTest.h
+@@ -14,6 +14,9 @@
+ #import "TProcessor.h"
+ #import "TObjective-C.h"
+ #import "TBase.h"
++#import "TAsyncTransport.h"
++#import "TProtocolFactory.h"
++#import "TBaseClient.h"
+ 
+ 
+ enum ThriftTestNumberz {
+@@ -1085,11 +1088,7 @@ typedef NSMutableDictionary * ThriftTestMapType;
+ - (void) testOneway: (int32_t) secondsToSleep;  // throws TException
+ @end
+ 
+-@interface ThriftTestThriftTestClient : NSObject <ThriftTestThriftTest> {
+-  id <TProtocol> inProtocol;
+-  id <TProtocol> outProtocol;
+-}
+-- (id) initWithProtocol: (id <TProtocol>) protocol;
++@interface ThriftTestThriftTestClient : TBaseClient <ThriftTestThriftTest> - (id) initWithProtocol: (id <TProtocol>) protocol;
+ - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
+ @end
+ 
+@@ -1106,11 +1105,7 @@ typedef NSMutableDictionary * ThriftTestMapType;
+ - (NSString *) secondtestString: (NSString *) thing;  // throws TException
+ @end
+ 
+-@interface ThriftTestSecondServiceClient : NSObject <ThriftTestSecondService> {
+-id <TProtocol> inProtocol;
+-id <TProtocol> outProtocol;
+-}
+-- (id) initWithProtocol: (id <TProtocol>) protocol;
++@interface ThriftTestSecondServiceClient : TBaseClient <ThriftTestSecondService> - (id) initWithProtocol: (id <TProtocol>) protocol;
+ - (id) initWithInProtocol: (id <TProtocol>) inProtocol outProtocol: (id <TProtocol>) outProtocol;
+ @end
+ 

@@ -37,6 +37,35 @@
 		32F682F01ABA2B6A00D663DF /* TSSLSocketException.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682DA1ABA2B6A00D663DF /* TSSLSocketException.m */; };
 		32F682F11ABA2B6A00D663DF /* TTransportException.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682DD1ABA2B6A00D663DF /* TTransportException.m */; };
 		32F682F21ABA2B6A00D663DF /* TSharedProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682DF1ABA2B6A00D663DF /* TSharedProcessorFactory.m */; };
+		32F682FD1ABA735100D663DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682FC1ABA735100D663DF /* main.m */; };
+		32F683001ABA735100D663DF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682FF1ABA735100D663DF /* AppDelegate.m */; };
+		32F683031ABA735100D663DF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F683021ABA735100D663DF /* ViewController.m */; };
+		32F683061ABA735100D663DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F683041ABA735100D663DF /* Main.storyboard */; };
+		32F683081ABA735100D663DF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32F683071ABA735100D663DF /* Images.xcassets */; };
+		32F6830B1ABA735100D663DF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F683091ABA735100D663DF /* LaunchScreen.xib */; };
+		32F683171ABA735100D663DF /* testnoasyncTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F683161ABA735100D663DF /* testnoasyncTests.m */; };
+		32F6831E1ABA738B00D663DF /* TBase.h in Sources */ = {isa = PBXBuildFile; fileRef = 32F682AF1ABA2B6A00D663DF /* TBase.h */; };
+		32F683201ABA738B00D663DF /* TBinaryProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682B11ABA2B6A00D663DF /* TBinaryProtocol.m */; };
+		32F683221ABA738B00D663DF /* TMultiplexedProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682B31ABA2B6A00D663DF /* TMultiplexedProtocol.m */; };
+		32F683251ABA738B00D663DF /* TProtocolDecorator.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682B61ABA2B6A00D663DF /* TProtocolDecorator.m */; };
+		32F683271ABA738B00D663DF /* TProtocolException.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682B81ABA2B6A00D663DF /* TProtocolException.m */; };
+		32F6832A1ABA738B00D663DF /* TProtocolUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682BB1ABA2B6A00D663DF /* TProtocolUtil.m */; };
+		32F6832C1ABA738B00D663DF /* TSocketServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682BE1ABA2B6A00D663DF /* TSocketServer.m */; };
+		32F6832E1ABA738B00D663DF /* TApplicationException.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682C01ABA2B6A00D663DF /* TApplicationException.m */; };
+		32F683301ABA738B00D663DF /* TBaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682C21ABA2B6A00D663DF /* TBaseClient.m */; };
+		32F683321ABA738B00D663DF /* TException.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682C41ABA2B6A00D663DF /* TException.m */; };
+		32F683391ABA738B00D663DF /* TFramedTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682CC1ABA2B6A00D663DF /* TFramedTransport.m */; };
+		32F6833B1ABA738B00D663DF /* THTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682CE1ABA2B6A00D663DF /* THTTPClient.m */; };
+		32F6833D1ABA738B00D663DF /* TMemoryBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682D01ABA2B6A00D663DF /* TMemoryBuffer.m */; };
+		32F6833F1ABA738B00D663DF /* TNSFileHandleTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682D21ABA2B6A00D663DF /* TNSFileHandleTransport.m */; };
+		32F683411ABA738B00D663DF /* TNSStreamTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682D41ABA2B6A00D663DF /* TNSStreamTransport.m */; };
+		32F683431ABA738B00D663DF /* TSocketClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682D61ABA2B6A00D663DF /* TSocketClient.m */; };
+		32F683451ABA738B00D663DF /* TSSLSocketClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682D81ABA2B6A00D663DF /* TSSLSocketClient.m */; };
+		32F683471ABA738B00D663DF /* TSSLSocketException.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682DA1ABA2B6A00D663DF /* TSSLSocketException.m */; };
+		32F6834A1ABA738B00D663DF /* TTransportException.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682DD1ABA2B6A00D663DF /* TTransportException.m */; };
+		32F6834C1ABA738B00D663DF /* TSharedProcessorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F682DF1ABA2B6A00D663DF /* TSharedProcessorFactory.m */; };
+		32F683511ABA73CD00D663DF /* asdf.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F6834E1ABA73CD00D663DF /* asdf.m */; };
+		32F683521ABA73CD00D663DF /* ThriftTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F683501ABA73CD00D663DF /* ThriftTest.m */; };
 		F2A6545605F010FE0581BA94 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00A71B840B066FED5278E52C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +76,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 32D8DBB61AB586D200D338B2;
 			remoteInfo = "thrift-cocoa-love";
+		};
+		32F683111ABA735100D663DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 32D8DBAF1AB586D200D338B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 32F682F71ABA735100D663DF;
+			remoteInfo = testnoasync;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -120,6 +156,23 @@
 		32F682DD1ABA2B6A00D663DF /* TTransportException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTransportException.m; sourceTree = "<group>"; };
 		32F682DE1ABA2B6A00D663DF /* TSharedProcessorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSharedProcessorFactory.h; sourceTree = "<group>"; };
 		32F682DF1ABA2B6A00D663DF /* TSharedProcessorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSharedProcessorFactory.m; sourceTree = "<group>"; };
+		32F682F81ABA735100D663DF /* testnoasync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testnoasync.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		32F682FB1ABA735100D663DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32F682FC1ABA735100D663DF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32F682FE1ABA735100D663DF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		32F682FF1ABA735100D663DF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		32F683011ABA735100D663DF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		32F683021ABA735100D663DF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		32F683051ABA735100D663DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		32F683071ABA735100D663DF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		32F6830A1ABA735100D663DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		32F683101ABA735100D663DF /* testnoasyncTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testnoasyncTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		32F683151ABA735100D663DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32F683161ABA735100D663DF /* testnoasyncTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testnoasyncTests.m; sourceTree = "<group>"; };
+		32F6834D1ABA73CD00D663DF /* asdf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = asdf.h; path = "gen-cocoa/no_clients/asdf.h"; sourceTree = SOURCE_ROOT; };
+		32F6834E1ABA73CD00D663DF /* asdf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = asdf.m; path = "gen-cocoa/no_clients/asdf.m"; sourceTree = SOURCE_ROOT; };
+		32F6834F1ABA73CD00D663DF /* ThriftTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThriftTest.h; path = "gen-cocoa/no_clients/ThriftTest.h"; sourceTree = SOURCE_ROOT; };
+		32F683501ABA73CD00D663DF /* ThriftTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ThriftTest.m; path = "gen-cocoa/no_clients/ThriftTest.m"; sourceTree = SOURCE_ROOT; };
 		9D07D1CBAC2CFC81F0022DE2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C604A55B4B9CE1025E4D0DDC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +187,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		32D8DBCD1AB586D200D338B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32F682F51ABA735100D663DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32F6830D1ABA735100D663DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -176,6 +243,8 @@
 			children = (
 				32D8DBB91AB586D200D338B2 /* thrift-cocoa-love */,
 				32D8DBD31AB586D200D338B2 /* thrift-cocoa-loveTests */,
+				32F682F91ABA735100D663DF /* testnoasync */,
+				32F683131ABA735100D663DF /* testnoasyncTests */,
 				32D8DBB81AB586D200D338B2 /* Products */,
 				1829A6B1854E385E83136F1B /* Pods */,
 				0566404D28A52DCD33C62865 /* Frameworks */,
@@ -187,6 +256,8 @@
 			children = (
 				32D8DBB71AB586D200D338B2 /* thrift-cocoa-love.app */,
 				32D8DBD01AB586D200D338B2 /* thrift-cocoa-loveTests.xctest */,
+				32F682F81ABA735100D663DF /* testnoasync.app */,
+				32F683101ABA735100D663DF /* testnoasyncTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -317,6 +388,51 @@
 			path = transport;
 			sourceTree = "<group>";
 		};
+		32F682F91ABA735100D663DF /* testnoasync */ = {
+			isa = PBXGroup;
+			children = (
+				32F6834D1ABA73CD00D663DF /* asdf.h */,
+				32F6834E1ABA73CD00D663DF /* asdf.m */,
+				32F6834F1ABA73CD00D663DF /* ThriftTest.h */,
+				32F683501ABA73CD00D663DF /* ThriftTest.m */,
+				32F682FE1ABA735100D663DF /* AppDelegate.h */,
+				32F682FF1ABA735100D663DF /* AppDelegate.m */,
+				32F683011ABA735100D663DF /* ViewController.h */,
+				32F683021ABA735100D663DF /* ViewController.m */,
+				32F683041ABA735100D663DF /* Main.storyboard */,
+				32F683071ABA735100D663DF /* Images.xcassets */,
+				32F683091ABA735100D663DF /* LaunchScreen.xib */,
+				32F682FA1ABA735100D663DF /* Supporting Files */,
+			);
+			path = testnoasync;
+			sourceTree = "<group>";
+		};
+		32F682FA1ABA735100D663DF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				32F682FB1ABA735100D663DF /* Info.plist */,
+				32F682FC1ABA735100D663DF /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		32F683131ABA735100D663DF /* testnoasyncTests */ = {
+			isa = PBXGroup;
+			children = (
+				32F683161ABA735100D663DF /* testnoasyncTests.m */,
+				32F683141ABA735100D663DF /* Supporting Files */,
+			);
+			path = testnoasyncTests;
+			sourceTree = "<group>";
+		};
+		32F683141ABA735100D663DF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				32F683151ABA735100D663DF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -357,6 +473,41 @@
 			productReference = 32D8DBD01AB586D200D338B2 /* thrift-cocoa-loveTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		32F682F71ABA735100D663DF /* testnoasync */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32F683181ABA735100D663DF /* Build configuration list for PBXNativeTarget "testnoasync" */;
+			buildPhases = (
+				32F682F41ABA735100D663DF /* Sources */,
+				32F682F51ABA735100D663DF /* Frameworks */,
+				32F682F61ABA735100D663DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = testnoasync;
+			productName = testnoasync;
+			productReference = 32F682F81ABA735100D663DF /* testnoasync.app */;
+			productType = "com.apple.product-type.application";
+		};
+		32F6830F1ABA735100D663DF /* testnoasyncTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32F6831B1ABA735100D663DF /* Build configuration list for PBXNativeTarget "testnoasyncTests" */;
+			buildPhases = (
+				32F6830C1ABA735100D663DF /* Sources */,
+				32F6830D1ABA735100D663DF /* Frameworks */,
+				32F6830E1ABA735100D663DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				32F683121ABA735100D663DF /* PBXTargetDependency */,
+			);
+			name = testnoasyncTests;
+			productName = testnoasyncTests;
+			productReference = 32F683101ABA735100D663DF /* testnoasyncTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -372,6 +523,13 @@
 					32D8DBCF1AB586D200D338B2 = {
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = 32D8DBB61AB586D200D338B2;
+					};
+					32F682F71ABA735100D663DF = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					32F6830F1ABA735100D663DF = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 32F682F71ABA735100D663DF;
 					};
 				};
 			};
@@ -390,6 +548,8 @@
 			targets = (
 				32D8DBB61AB586D200D338B2 /* thrift-cocoa-love */,
 				32D8DBCF1AB586D200D338B2 /* thrift-cocoa-loveTests */,
+				32F682F71ABA735100D663DF /* testnoasync */,
+				32F6830F1ABA735100D663DF /* testnoasyncTests */,
 			);
 		};
 /* End PBXProject section */
@@ -406,6 +566,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		32D8DBCE1AB586D200D338B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32F682F61ABA735100D663DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32F683061ABA735100D663DF /* Main.storyboard in Resources */,
+				32F6830B1ABA735100D663DF /* LaunchScreen.xib in Resources */,
+				32F683081ABA735100D663DF /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32F6830E1ABA735100D663DF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -489,6 +666,46 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		32F682F41ABA735100D663DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32F6831E1ABA738B00D663DF /* TBase.h in Sources */,
+				32F683201ABA738B00D663DF /* TBinaryProtocol.m in Sources */,
+				32F683221ABA738B00D663DF /* TMultiplexedProtocol.m in Sources */,
+				32F683251ABA738B00D663DF /* TProtocolDecorator.m in Sources */,
+				32F683271ABA738B00D663DF /* TProtocolException.m in Sources */,
+				32F6832A1ABA738B00D663DF /* TProtocolUtil.m in Sources */,
+				32F6832C1ABA738B00D663DF /* TSocketServer.m in Sources */,
+				32F683511ABA73CD00D663DF /* asdf.m in Sources */,
+				32F6832E1ABA738B00D663DF /* TApplicationException.m in Sources */,
+				32F683301ABA738B00D663DF /* TBaseClient.m in Sources */,
+				32F683321ABA738B00D663DF /* TException.m in Sources */,
+				32F683391ABA738B00D663DF /* TFramedTransport.m in Sources */,
+				32F683521ABA73CD00D663DF /* ThriftTest.m in Sources */,
+				32F6833B1ABA738B00D663DF /* THTTPClient.m in Sources */,
+				32F6833D1ABA738B00D663DF /* TMemoryBuffer.m in Sources */,
+				32F6833F1ABA738B00D663DF /* TNSFileHandleTransport.m in Sources */,
+				32F683411ABA738B00D663DF /* TNSStreamTransport.m in Sources */,
+				32F683431ABA738B00D663DF /* TSocketClient.m in Sources */,
+				32F683451ABA738B00D663DF /* TSSLSocketClient.m in Sources */,
+				32F683471ABA738B00D663DF /* TSSLSocketException.m in Sources */,
+				32F6834A1ABA738B00D663DF /* TTransportException.m in Sources */,
+				32F6834C1ABA738B00D663DF /* TSharedProcessorFactory.m in Sources */,
+				32F683031ABA735100D663DF /* ViewController.m in Sources */,
+				32F683001ABA735100D663DF /* AppDelegate.m in Sources */,
+				32F682FD1ABA735100D663DF /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32F6830C1ABA735100D663DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32F683171ABA735100D663DF /* testnoasyncTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -496,6 +713,11 @@
 			isa = PBXTargetDependency;
 			target = 32D8DBB61AB586D200D338B2 /* thrift-cocoa-love */;
 			targetProxy = 32D8DBD11AB586D200D338B2 /* PBXContainerItemProxy */;
+		};
+		32F683121ABA735100D663DF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 32F682F71ABA735100D663DF /* testnoasync */;
+			targetProxy = 32F683111ABA735100D663DF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -512,6 +734,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				32D8DBCA1AB586D200D338B2 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		32F683041ABA735100D663DF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32F683051ABA735100D663DF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		32F683091ABA735100D663DF /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				32F6830A1ABA735100D663DF /* Base */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -653,6 +891,70 @@
 			};
 			name = Release;
 		};
+		32F683191ABA735100D663DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = testnoasync/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		32F6831A1ABA735100D663DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = testnoasync/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		32F6831C1ABA735100D663DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = testnoasyncTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/testnoasync.app/testnoasync";
+			};
+			name = Debug;
+		};
+		32F6831D1ABA735100D663DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = testnoasyncTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/testnoasync.app/testnoasync";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -682,6 +984,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		32F683181ABA735100D663DF /* Build configuration list for PBXNativeTarget "testnoasync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32F683191ABA735100D663DF /* Debug */,
+				32F6831A1ABA735100D663DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		32F6831B1ABA735100D663DF /* Build configuration list for PBXNativeTarget "testnoasyncTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32F6831C1ABA735100D663DF /* Debug */,
+				32F6831D1ABA735100D663DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

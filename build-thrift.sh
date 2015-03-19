@@ -1,10 +1,7 @@
 #!/bin/bash
 
 display_usage() { 
-    echo -e "This script was intended to be run in order to install the version of thrift used "
-    echo -e "when generating the code used in this repository. IT WILL RUN SUDO MAKE INSTALL.\n"
-    echo -e "If you're sure you want to do this, run '$0 --configure' in order to configure the "
-    echo -e "build and then '$0 --install' in order to install it.\n"
+    echo -e "Run either '$0 --configure' or '$0 --compile'"
 }
 
 if [  $# -le 0 ] 
@@ -29,10 +26,9 @@ then
         --without-cpp
 fi
 
-if [ $1 == "--install" ];
+if [ $1 == "--compile" ];
 then
-    make
-    sudo make install
+    make -j 5
 fi
 
 popd
